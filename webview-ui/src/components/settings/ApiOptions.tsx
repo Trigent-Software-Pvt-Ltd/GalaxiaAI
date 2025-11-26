@@ -41,7 +41,7 @@ import {
 	minimaxDefaultModelId,
 	type ToolProtocol,
 	TOOL_PROTOCOL,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { vscode } from "@src/utils/vscode"
 import { validateApiConfigurationExcludingModelErrors, getModelValidationError } from "@src/utils/validate"

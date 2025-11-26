@@ -7,13 +7,13 @@ import {
 	OPENROUTER_DEFAULT_PROVIDER_NAME,
 	OPEN_ROUTER_PROMPT_CACHING_MODELS,
 	DEEP_SEEK_DEFAULT_TEMPERATURE,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import type { ApiHandlerOptions, ModelRecord } from "../../shared/api"
 
 import { convertToOpenAiMessages } from "../transform/openai-format"
 import { resolveToolProtocol } from "../../utils/resolveToolProtocol"
-import { TOOL_PROTOCOL } from "@roo-code/types"
+import { TOOL_PROTOCOL } from "@galaxia/types"
 import { ApiStreamChunk } from "../transform/stream"
 import { convertToR1Format } from "../transform/r1-format"
 import { addCacheBreakpoints as addAnthropicCacheBreakpoints } from "../transform/caching/anthropic"

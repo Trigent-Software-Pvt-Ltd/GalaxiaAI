@@ -1,7 +1,7 @@
-// npx vitest run __tests__/extension.spec.ts
+﻿// npx vitest run __tests__/extension.spec.ts
 
 import type * as vscode from "vscode"
-import type { AuthState } from "@roo-code/types"
+import type { AuthState } from "@galaxia/types"
 
 vi.mock("vscode", () => ({
 	window: {
@@ -48,7 +48,7 @@ vi.mock("@dotenvx/dotenvx", () => ({
 
 const mockBridgeOrchestratorDisconnect = vi.fn().mockResolvedValue(undefined)
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@galaxia/cloud", () => ({
 	CloudService: {
 		createInstance: vi.fn(),
 		hasInstance: vi.fn().mockReturnValue(true),
@@ -64,10 +64,10 @@ vi.mock("@roo-code/cloud", () => ({
 	BridgeOrchestrator: {
 		disconnect: mockBridgeOrchestratorDisconnect,
 	},
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
+	getGalaxiaApiUrl: vi.fn().mockReturnValue(""),
 }))
 
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@galaxia/telemetry", () => ({
 	TelemetryService: {
 		createInstance: vi.fn().mockReturnValue({
 			register: vi.fn(),
@@ -194,7 +194,7 @@ describe("extension.ts", () => {
 	})
 
 	test("authStateChangedHandler calls BridgeOrchestrator.disconnect when logged-out event fires", async () => {
-		const { CloudService, BridgeOrchestrator } = await import("@roo-code/cloud")
+		const { CloudService, BridgeOrchestrator } = await import("@galaxia/cloud")
 
 		// Capture the auth state changed handler.
 		vi.mocked(CloudService.createInstance).mockImplementation(async (_context, _logger, handlers) => {
@@ -227,7 +227,7 @@ describe("extension.ts", () => {
 	})
 
 	test("authStateChangedHandler does not call BridgeOrchestrator.disconnect for other states", async () => {
-		const { CloudService } = await import("@roo-code/cloud")
+		const { CloudService } = await import("@galaxia/cloud")
 
 		// Capture the auth state changed handler.
 		vi.mocked(CloudService.createInstance).mockImplementation(async (_context, _logger, handlers) => {

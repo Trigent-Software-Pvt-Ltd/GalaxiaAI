@@ -1,4 +1,4 @@
-# Roo Code Changelog
+# Galaxia Changelog
 
 ## [3.34.5] - 2025-11-25
 

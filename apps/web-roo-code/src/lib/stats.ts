@@ -1,6 +1,6 @@
-export async function getGitHubStars() {
+﻿export async function getGitHubStars() {
 	try {
-		const res = await fetch("https://api.github.com/repos/RooCodeInc/Roo-Code")
+		const res = await fetch("https://api.github.com/repos/TrigentSoftwareInc/Roo-Code")
 		const data = await res.json()
 
 		if (typeof data.stargazers_count !== "number") {
@@ -28,7 +28,7 @@ export async function getVSCodeReviews() {
 					criteria: [
 						{
 							filterType: 7,
-							value: "RooVeterinaryInc.roo-cline",
+							value: "TrigentSoftwareInc.galaxia",
 						},
 					],
 				},
@@ -72,7 +72,7 @@ export async function getVSCodeDownloads() {
 					criteria: [
 						{
 							filterType: 7,
-							value: "RooVeterinaryInc.roo-cline",
+							value: "TrigentSoftwareInc.galaxia",
 						},
 					],
 				},

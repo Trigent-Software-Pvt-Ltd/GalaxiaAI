@@ -1,9 +1,9 @@
-import * as fs from "fs"
+﻿import * as fs from "fs"
 import * as path from "path"
 import * as os from "os"
 import { z } from "zod"
 
-import { CloudService, getClerkBaseUrl, PRODUCTION_CLERK_BASE_URL } from "@roo-code/cloud"
+import { CloudService, getClerkBaseUrl, PRODUCTION_CLERK_BASE_URL } from "@galaxia/cloud"
 
 import { t } from "../../i18n"
 
@@ -147,14 +147,14 @@ export class MdmService {
 
 		switch (platform) {
 			case "win32": {
-				// Windows: %ProgramData%\RooCode\mdm.json or mdm.dev.json
+				// Windows: %ProgramData%\Galaxia\mdm.json or mdm.dev.json
 				const programData = process.env.PROGRAMDATA || "C:\\ProgramData"
-				return path.join(programData, "RooCode", configFileName)
+				return path.join(programData, "Galaxia", configFileName)
 			}
 
 			case "darwin":
-				// macOS: /Library/Application Support/RooCode/mdm.json or mdm.dev.json
-				return `/Library/Application Support/RooCode/${configFileName}`
+				// macOS: /Library/Application Support/Galaxia/mdm.json or mdm.dev.json
+				return `/Library/Application Support/Galaxia/${configFileName}`
 
 			case "linux":
 			default:

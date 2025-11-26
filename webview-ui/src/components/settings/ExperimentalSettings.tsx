@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react"
 import { FlaskConical } from "lucide-react"
 
-import type { Experiments, ImageGenerationProvider } from "@roo-code/types"
+import type { Experiments, ImageGenerationProvider } from "@galaxia/types"
 
 import { EXPERIMENT_IDS, experimentConfigsMap } from "@roo/experiments"
 

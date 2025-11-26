@@ -1,4 +1,4 @@
-import { render, screen } from "@/utils/test-utils"
+﻿import { render, screen } from "@/utils/test-utils"
 
 import { TranslationProvider } from "@/i18n/__mocks__/TranslationContext"
 
@@ -90,7 +90,7 @@ describe("About", () => {
 			</TranslationProvider>,
 		)
 		expect(screen.getByText("settings:about.contact.label")).toBeInTheDocument()
-		expect(screen.getByText("support@roocode.com")).toBeInTheDocument()
+		expect(screen.getByText("anand_p@trigent.com")).toBeInTheDocument()
 	})
 
 	it("renders export, import, and reset buttons", () => {

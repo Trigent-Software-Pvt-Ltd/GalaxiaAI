@@ -1,4 +1,4 @@
-// Mock VSCode API for Vitest tests
+﻿// Mock VSCode API for Vitest tests
 const mockEventEmitter = () => ({
 	event: () => () => {},
 	fire: () => {},
@@ -71,7 +71,7 @@ export const window = {
 	}),
 	createTerminal: () => ({
 		exitStatus: undefined,
-		name: "Roo Code",
+		name: "Galaxia",
 		processId: Promise.resolve(123),
 		creationOptions: {},
 		state: { isInteractedWith: true },

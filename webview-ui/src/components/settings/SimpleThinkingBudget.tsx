@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-import { type ProviderSettings, type ModelInfo, type ReasoningEffort, reasoningEfforts } from "@roo-code/types"
+import { type ProviderSettings, type ModelInfo, type ReasoningEffort, reasoningEfforts } from "@galaxia/types"
 
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@src/components/ui"

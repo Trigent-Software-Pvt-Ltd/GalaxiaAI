@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest"
-import type { ModeConfig } from "@roo-code/types"
+import type { ModeConfig } from "@galaxia/types"
 
 describe("Native Tools Filtering by Mode", () => {
 	describe("attemptApiRequest native tool filtering", () => {

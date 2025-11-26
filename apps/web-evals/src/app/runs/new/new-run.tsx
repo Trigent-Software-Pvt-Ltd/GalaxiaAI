@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
@@ -16,7 +16,7 @@ import {
 	getModelId,
 	type ProviderSettings,
 	type GlobalSettings,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { createRun } from "@/actions/runs"
 import { getExercises } from "@/actions/exercises"
@@ -34,7 +34,7 @@ import {
 import { cn } from "@/lib/utils"
 
 import { useOpenRouterModels } from "@/hooks/use-open-router-models"
-import { useRooCodeCloudModels } from "@/hooks/use-roo-code-cloud-models"
+import { useGalaxiaCloudModels } from "@/hooks/use-roo-code-cloud-models"
 
 import {
 	Button,
@@ -85,11 +85,11 @@ export function NewRun() {
 	const [configPopoverOpen, setConfigPopoverOpen] = useState(false)
 
 	const openRouter = useOpenRouterModels()
-	const rooCodeCloud = useRooCodeCloudModels()
-	const models = provider === "openrouter" ? openRouter.data : rooCodeCloud.data
-	const searchValue = provider === "openrouter" ? openRouter.searchValue : rooCodeCloud.searchValue
-	const setSearchValue = provider === "openrouter" ? openRouter.setSearchValue : rooCodeCloud.setSearchValue
-	const onFilter = provider === "openrouter" ? openRouter.onFilter : rooCodeCloud.onFilter
+	const GalaxiaCloud = useGalaxiaCloudModels()
+	const models = provider === "openrouter" ? openRouter.data : GalaxiaCloud.data
+	const searchValue = provider === "openrouter" ? openRouter.searchValue : GalaxiaCloud.searchValue
+	const setSearchValue = provider === "openrouter" ? openRouter.setSearchValue : GalaxiaCloud.setSearchValue
+	const onFilter = provider === "openrouter" ? openRouter.onFilter : GalaxiaCloud.onFilter
 
 	const exercises = useQuery({ queryKey: ["getExercises"], queryFn: () => getExercises() })
 
@@ -314,7 +314,7 @@ export function NewRun() {
 									value={provider}
 									onValueChange={(value) => setModelSource(value as "roo" | "openrouter" | "other")}>
 									<TabsList className="mb-2">
-										<TabsTrigger value="roo">Roo Code Cloud</TabsTrigger>
+										<TabsTrigger value="roo">Galaxia Cloud</TabsTrigger>
 										<TabsTrigger value="openrouter">OpenRouter</TabsTrigger>
 										<TabsTrigger value="other">Other</TabsTrigger>
 									</TabsList>
@@ -468,13 +468,13 @@ export function NewRun() {
 							name="jobToken"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Roo Code Cloud Token</FormLabel>
+									<FormLabel>Galaxia Cloud Token</FormLabel>
 									<FormControl>
 										<Input type="password" {...field} />
 									</FormControl>
 									<FormMessage />
 									<FormDescription>
-										If you have access to the Roo Code Cloud repository then you can generate a
+										If you have access to the Galaxia Cloud repository then you can generate a
 										token with:
 										<br />
 										<code className="text-xs">

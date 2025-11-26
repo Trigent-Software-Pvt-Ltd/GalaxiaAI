@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Generate a dynamic OpenGraph image URL
  * @param title - The title to display on the OG image
  * @param description - Optional description to display (will be truncated to ~140 chars)
  * @returns Absolute URL to the dynamic OG image endpoint
  */
 export function ogImageUrl(title: string, description?: string): string {
-	const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://roocode.com"
+	const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://trigent.com/"
 	const params = new URLSearchParams()
 
 	params.set("title", title)

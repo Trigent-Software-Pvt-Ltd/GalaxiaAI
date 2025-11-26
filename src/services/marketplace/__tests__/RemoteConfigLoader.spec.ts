@@ -1,16 +1,16 @@
-// npx vitest services/marketplace/__tests__/RemoteConfigLoader.spec.ts
+﻿// npx vitest services/marketplace/__tests__/RemoteConfigLoader.spec.ts
 
 import axios from "axios"
 import { RemoteConfigLoader } from "../RemoteConfigLoader"
-import type { MarketplaceItemType } from "@roo-code/types"
+import type { MarketplaceItemType } from "@galaxia/types"
 
 // Mock axios
 vi.mock("axios")
 const mockedAxios = axios as any
 
 // Mock the cloud config
-vi.mock("@roo-code/cloud", () => ({
-	getRooCodeApiUrl: () => "https://test.api.com",
+vi.mock("@galaxia/cloud", () => ({
+	getGalaxiaApiUrl: () => "https://test.api.com",
 }))
 
 describe("RemoteConfigLoader", () => {

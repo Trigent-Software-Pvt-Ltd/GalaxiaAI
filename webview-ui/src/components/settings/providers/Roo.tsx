@@ -1,4 +1,4 @@
-import { type ProviderSettings, type OrganizationAllowList, rooDefaultModelId } from "@roo-code/types"
+﻿import { type ProviderSettings, type OrganizationAllowList, rooDefaultModelId } from "@galaxia/types"
 
 import type { RouterModels } from "@roo/api"
 
@@ -51,8 +51,8 @@ export const Roo = ({
 				defaultModelId={rooDefaultModelId}
 				models={routerModels?.roo ?? {}}
 				modelIdKey="apiModelId"
-				serviceName="Roo Code Cloud"
-				serviceUrl="https://roocode.com"
+				serviceName="Galaxia Cloud"
+				serviceUrl="https://trigent.com/"
 				organizationAllowList={organizationAllowList}
 				errorMessage={modelValidationError}
 			/>

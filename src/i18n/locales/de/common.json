@@ -1,6 +1,6 @@
-{
+﻿{
 	"extension": {
-		"name": "Roo Code",
+		"name": "Galaxia",
 		"description": "Ein komplettes Entwicklerteam mit KI in deinem Editor."
 	},
 	"number_format": {
@@ -118,7 +118,7 @@
 			"completionError": "Cerebras-Vervollständigungsfehler: {{error}}"
 		},
 		"roo": {
-			"authenticationRequired": "Roo-Anbieter erfordert Cloud-Authentifizierung. Bitte melde dich bei Roo Code Cloud an."
+			"authenticationRequired": "Roo-Anbieter erfordert Cloud-Authentifizierung. Bitte melde dich bei Galaxia Cloud an."
 		},
 		"api": {
 			"invalidKeyInvalidChars": "API-Schlüssel enthält ungültige Zeichen."
@@ -132,7 +132,7 @@
 	"warnings": {
 		"no_terminal_content": "Kein Terminal-Inhalt ausgewählt",
 		"missing_task_files": "Die Dateien dieser Aufgabe fehlen. Möchtest du sie aus der Aufgabenliste entfernen?",
-		"auto_import_failed": "Fehler beim automatischen Import der RooCode-Einstellungen: {{error}}"
+		"auto_import_failed": "Fehler beim automatischen Import der Galaxia-Einstellungen: {{error}}"
 	},
 	"info": {
 		"no_changes": "Keine Änderungen gefunden.",
@@ -141,7 +141,7 @@
 		"custom_storage_path_set": "Benutzerdefinierter Speicherpfad festgelegt: {{path}}",
 		"default_storage_path": "Auf Standardspeicherpfad zurückgesetzt",
 		"settings_imported": "Einstellungen erfolgreich importiert.",
-		"auto_import_success": "RooCode-Einstellungen automatisch importiert aus {{filename}}",
+		"auto_import_success": "Galaxia-Einstellungen automatisch importiert aus {{filename}}",
 		"share_link_copied": "Share-Link in die Zwischenablage kopiert",
 		"image_copied_to_clipboard": "Bild-Daten-URI in die Zwischenablage kopiert",
 		"image_saved": "Bild gespeichert unter {{path}}",
@@ -173,8 +173,8 @@
 	},
 	"storage": {
 		"prompt_custom_path": "Gib den benutzerdefinierten Speicherpfad für den Gesprächsverlauf ein, leer lassen für Standardspeicherort",
-		"path_placeholder": "D:\\RooCodeStorage",
-		"enter_absolute_path": "Bitte gib einen absoluten Pfad ein (z.B. D:\\RooCodeStorage oder /home/user/storage)",
+		"path_placeholder": "D:\\GalaxiaStorage",
+		"enter_absolute_path": "Bitte gib einen absoluten Pfad ein (z.B. D:\\GalaxiaStorage oder /home/user/storage)",
 		"enter_valid_path": "Bitte gib einen gültigen Pfad ein"
 	},
 	"input": {
@@ -216,8 +216,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Deine Organisation erfordert eine Roo Code Cloud-Authentifizierung. Bitte melde dich an, um fortzufahren.",
-			"organization_mismatch": "Du musst mit dem Roo Code Cloud-Konto deiner Organisation authentifiziert sein.",
+			"cloud_auth_required": "Deine Organisation erfordert eine Galaxia Cloud-Authentifizierung. Bitte melde dich an, um fortzufahren.",
+			"organization_mismatch": "Du musst mit dem Galaxia Cloud-Konto deiner Organisation authentifiziert sein.",
 			"verification_failed": "Die Organisationsauthentifizierung konnte nicht verifiziert werden."
 		},
 		"info": {
@@ -239,6 +239,6 @@
 	},
 	"docsLink": {
 		"label": "Docs",
-		"url": "https://docs.roocode.com"
+		"url": ""
 	}
 }

@@ -1,8 +1,8 @@
-import { Anthropic } from "@anthropic-ai/sdk"
+﻿import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
 import axios from "axios"
 
-import { type ModelInfo, openAiModelInfoSaneDefaults, LMSTUDIO_DEFAULT_TEMPERATURE } from "@roo-code/types"
+import { type ModelInfo, openAiModelInfoSaneDefaults, LMSTUDIO_DEFAULT_TEMPERATURE } from "@galaxia/types"
 
 import type { ApiHandlerOptions } from "../../shared/api"
 
@@ -139,7 +139,7 @@ export class LmStudioHandler extends BaseProvider implements SingleCompletionHan
 			} as const
 		} catch (error) {
 			throw new Error(
-				"Please check the LM Studio developer logs to debug what went wrong. You may need to load the model with a larger context length to work with Roo Code's prompts.",
+				"Please check the LM Studio developer logs to debug what went wrong. You may need to load the model with a larger context length to work with Galaxia's prompts.",
 			)
 		}
 	}
@@ -183,7 +183,7 @@ export class LmStudioHandler extends BaseProvider implements SingleCompletionHan
 			return response.choices[0]?.message.content || ""
 		} catch (error) {
 			throw new Error(
-				"Please check the LM Studio developer logs to debug what went wrong. You may need to load the model with a larger context length to work with Roo Code's prompts.",
+				"Please check the LM Studio developer logs to debug what went wrong. You may need to load the model with a larger context length to work with Galaxia's prompts.",
 			)
 		}
 	}

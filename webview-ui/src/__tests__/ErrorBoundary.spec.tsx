@@ -1,4 +1,4 @@
-import React from "react"
+﻿import React from "react"
 import { render, screen } from "@testing-library/react"
 import ErrorBoundary from "../components/ErrorBoundary"
 
@@ -71,7 +71,7 @@ describe("ErrorBoundary", () => {
 		// Check for the GitHub link
 		const githubLink = screen.getByRole("link", { name: /errorBoundary.githubText/ })
 		expect(githubLink).toBeInTheDocument()
-		expect(githubLink).toHaveAttribute("href", "https://github.com/RooCodeInc/Roo-Code/issues")
+		expect(githubLink).toHaveAttribute("href", "https://github.com/TrigentSoftwareInc/Roo-Code/issues")
 
 		// Check for other error boundary elements
 		expect(screen.getByText(/errorBoundary.copyInstructions/)).toBeInTheDocument()

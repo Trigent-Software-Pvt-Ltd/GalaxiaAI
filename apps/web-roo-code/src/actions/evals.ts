@@ -1,7 +1,7 @@
-"use server"
+﻿"use server"
 
-import { getModelId, rooCodeSettingsSchema } from "@roo-code/types"
-import { getRuns, getLanguageScores } from "@roo-code/evals"
+import { getModelId, GalaxiaSettingsSchema } from "@galaxia/types"
+import { getRuns, getLanguageScores } from "@galaxia/evals"
 
 import { formatScore } from "@/lib"
 
@@ -10,10 +10,10 @@ export async function getEvalRuns() {
 
 	const runs = (await getRuns())
 		.filter((run) => !!run.taskMetrics)
-		.filter(({ settings }) => rooCodeSettingsSchema.safeParse(settings).success)
+		.filter(({ settings }) => GalaxiaSettingsSchema.safeParse(settings).success)
 		.sort((a, b) => b.passed - a.passed)
 		.map((run) => {
-			const settings = rooCodeSettingsSchema.parse(run.settings)
+			const settings = GalaxiaSettingsSchema.parse(run.settings)
 
 			return {
 				...run,

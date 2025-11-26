@@ -1,5 +1,5 @@
-{
-	"greeting": "歡迎使用 Roo Code！",
+﻿{
+	"greeting": "歡迎使用 Galaxia！",
 	"task": {
 		"title": "工作",
 		"expand": "展開工作",
@@ -21,11 +21,11 @@
 		"sharePublicly": "公開分享",
 		"sharePubliclyDescription": "任何擁有連結的人都可存取",
 		"connectToCloud": "連線至雲端",
-		"connectToCloudDescription": "登入 Roo Code Cloud 以分享工作",
+		"connectToCloudDescription": "登入 Galaxia Cloud 以分享工作",
 		"sharingDisabledByOrganization": "組織已停用分享功能",
 		"shareSuccessOrganization": "組織連結已複製到剪貼簿",
 		"shareSuccessPublic": "公開連結已複製到剪貼簿",
-		"openInCloud": "在 Roo Code Cloud 中開啟工作",
+		"openInCloud": "在 Galaxia Cloud 中開啟工作",
 		"openInCloudIntro": "從任何地方繼續監控或與 Roo 互動。掃描、點擊或複製以開啟。"
 	},
 	"unpin": "取消釘選",
@@ -96,7 +96,7 @@
 		"placeholder": "編輯您的訊息..."
 	},
 	"scrollToBottom": "捲動至聊天室底部",
-	"about": "Roo Code 是您編輯器中的整個 AI 開發團隊。",
+	"about": "Galaxia 是您編輯器中的整個 AI 開發團隊。",
 	"docs": "請參閱我們的<DocsLink>說明文件</DocsLink>以了解詳細資訊。",
 	"onboarding": "此工作區的工作清單是空的。",
 	"rooTips": {
@@ -292,18 +292,18 @@
 		"triggerLabelAll": "YOLO"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} 已發布",
+		"title": "🎉 Galaxia {{version}} 已發布",
 		"stealthModel": {
-			"feature": "<bold>限時免費隱形模型</bold> - Code Supernova：現已升級為 <bold>1M Token 上下文視窗</bold>！一個支援圖像輸入的多功能代理程式編程模型，透過 Roo Code Cloud 提供。",
+			"feature": "<bold>限時免費隱形模型</bold> - Code Supernova：現已升級為 <bold>1M Token 上下文視窗</bold>！一個支援圖像輸入的多功能代理程式編程模型，透過 Galaxia Cloud 提供。",
 			"note": "(注意：提示和完成會被模型創建者記錄並用於改進模型)",
-			"connectButton": "連接到 Roo Code Cloud",
-			"selectModel": "在設定中從 Roo Code Cloud 提供商選擇 <code>roo/code-supernova</code> 開始使用。",
+			"connectButton": "連接到 Galaxia Cloud",
+			"selectModel": "在設定中從 Galaxia Cloud 提供商選擇 <code>roo/code-supernova</code> 開始使用。",
 			"goToSettingsButton": "前往設定"
 		},
 		"release": {
 			"heading": "最新功能：",
 			"browserUse": "Browser Use 2.0 升級了聊天內瀏覽體驗，支援持久會話、更清晰的回饋、專用瀏覽器面板以及更自然的動作描述",
-			"cloudPaid": "Roo Code Cloud 現已提供付費模型：購買點數即可同時用於雲端代理和推理服務"
+			"cloudPaid": "Galaxia Cloud 現已提供付費模型：購買點數即可同時用於雲端代理和推理服務"
 		},
 		"cloudAgents": {
 			"heading": "雲端的新功能：",
@@ -312,7 +312,7 @@
 			"tryButton": "試用雲端代理"
 		},
 		"careers": "此外，<careersLink>我們正在招募！</careersLink>",
-		"socialLinks": "在 <xLink>X</xLink>、<discordLink>Discord</discordLink> 或 <redditLink>r/RooCode</redditLink> 上關注我們 🚀"
+		"socialLinks": "在 <xLink>X</xLink>、<discordLink>Discord</discordLink> 或 <redditLink>r/Galaxia</redditLink> 上關注我們 🚀"
 	},
 	"reasoning": {
 		"thinking": "思考中",
@@ -359,7 +359,7 @@
 	"profileViolationWarning": "目前設定檔與您的組織設定不相容",
 	"shellIntegration": {
 		"title": "命令執行警告",
-		"description": "您的命令正在沒有 VSCode 終端機 Shell 整合的情況下執行。若要隱藏此警告，您可以在 <settingsLink>Roo Code 設定</settingsLink> 的<strong>終端機</strong>區塊中停用 Shell 整合，或使用下方的連結來排解 VSCode 終端機整合問題。",
+		"description": "您的命令正在沒有 VSCode 終端機 Shell 整合的情況下執行。若要隱藏此警告，您可以在 <settingsLink>Galaxia 設定</settingsLink> 的<strong>終端機</strong>區塊中停用 Shell 整合，或使用下方的連結來排解 VSCode 終端機整合問題。",
 		"troubleshooting": "點選此處查看 Shell 整合文件。"
 	},
 	"ask": {
@@ -385,7 +385,7 @@
 		"ariaLabel": "版本 {{version}} - 點選查看發布說明"
 	},
 	"rooCloudCTA": {
-		"title": "Roo Code Cloud 正在進化！",
+		"title": "Galaxia Cloud 正在進化！",
 		"description": "在雲端執行 Roomote 遠端代理、隨時隨地存取您的工作、與他人協作等等。",
 		"joinWaitlist": "註冊以獲得最新更新。"
 	},

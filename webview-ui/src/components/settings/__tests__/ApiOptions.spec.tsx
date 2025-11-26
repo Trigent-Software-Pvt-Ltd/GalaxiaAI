@@ -3,7 +3,7 @@
 import { render, screen, fireEvent } from "@/utils/test-utils"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-import { type ModelInfo, type ProviderSettings, openAiModelInfoSaneDefaults } from "@roo-code/types"
+import { type ModelInfo, type ProviderSettings, openAiModelInfoSaneDefaults } from "@galaxia/types"
 
 import * as ExtensionStateContext from "@src/context/ExtensionStateContext"
 const { ExtensionStateContextProvider } = ExtensionStateContext

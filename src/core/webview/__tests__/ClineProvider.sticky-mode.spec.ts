@@ -1,11 +1,11 @@
-// npx vitest core/webview/__tests__/ClineProvider.sticky-mode.spec.ts
+﻿// npx vitest core/webview/__tests__/ClineProvider.sticky-mode.spec.ts
 
 import * as vscode from "vscode"
-import { TelemetryService } from "@roo-code/telemetry"
+import { TelemetryService } from "@galaxia/telemetry"
 import { ClineProvider } from "../ClineProvider"
 import { ContextProxy } from "../../config/ContextProxy"
 import { Task } from "../../task/Task"
-import type { HistoryItem, ProviderName } from "@roo-code/types"
+import type { HistoryItem, ProviderName } from "@galaxia/types"
 
 vi.mock("vscode", () => ({
 	ExtensionContext: vi.fn(),
@@ -104,7 +104,7 @@ vi.mock("../../diff/strategies/multi-search-replace", () => ({
 	})),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@galaxia/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {
@@ -116,7 +116,7 @@ vi.mock("@roo-code/cloud", () => ({
 	BridgeOrchestrator: {
 		isEnabled: vi.fn().mockReturnValue(false),
 	},
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
+	getGalaxiaApiUrl: vi.fn().mockReturnValue(""),
 }))
 
 vi.mock("../../../shared/modes", () => ({
@@ -169,7 +169,7 @@ vi.mock("fs/promises", () => ({
 	rmdir: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@galaxia/telemetry", () => ({
 	TelemetryService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		createInstance: vi.fn(),

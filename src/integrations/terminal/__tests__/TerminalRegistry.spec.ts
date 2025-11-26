@@ -1,4 +1,4 @@
-// npx vitest run src/integrations/terminal/__tests__/TerminalRegistry.spec.ts
+﻿// npx vitest run src/integrations/terminal/__tests__/TerminalRegistry.spec.ts
 
 import * as vscode from "vscode"
 import { Terminal } from "../Terminal"
@@ -18,7 +18,7 @@ describe("TerminalRegistry", () => {
 			(...args: any[]) =>
 				({
 					exitStatus: undefined,
-					name: "Roo Code",
+					name: "Galaxia",
 					processId: Promise.resolve(123),
 					creationOptions: {},
 					state: {
@@ -42,7 +42,7 @@ describe("TerminalRegistry", () => {
 
 			expect(mockCreateTerminal).toHaveBeenCalledWith({
 				cwd: "/test/path",
-				name: "Roo Code",
+				name: "Galaxia",
 				iconPath: expect.any(Object),
 				env: {
 					PAGER,
@@ -62,7 +62,7 @@ describe("TerminalRegistry", () => {
 
 				expect(mockCreateTerminal).toHaveBeenCalledWith({
 					cwd: "/test/path",
-					name: "Roo Code",
+					name: "Galaxia",
 					iconPath: expect.any(Object),
 					env: {
 						PAGER,
@@ -84,7 +84,7 @@ describe("TerminalRegistry", () => {
 
 				expect(mockCreateTerminal).toHaveBeenCalledWith({
 					cwd: "/test/path",
-					name: "Roo Code",
+					name: "Galaxia",
 					iconPath: expect.any(Object),
 					env: {
 						PAGER,
@@ -105,7 +105,7 @@ describe("TerminalRegistry", () => {
 
 				expect(mockCreateTerminal).toHaveBeenCalledWith({
 					cwd: "/test/path",
-					name: "Roo Code",
+					name: "Galaxia",
 					iconPath: expect.any(Object),
 					env: {
 						PAGER,

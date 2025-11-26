@@ -1,4 +1,4 @@
-{
+﻿{
 	"readFile": {
 		"linesRange": " (строки {{start}}-{{end}})",
 		"definitionsOnly": " (только определения)",
@@ -24,7 +24,7 @@
 		"invalidImageFormat": "Получен недопустимый формат изображения",
 		"unknownError": "Произошла неизвестная ошибка",
 		"roo": {
-			"authRequired": "Для генерации изображений требуется аутентификация Roo Code Cloud. Войдите в Roo Code Cloud."
+			"authRequired": "Для генерации изображений требуется аутентификация Galaxia Cloud. Войдите в Galaxia Cloud."
 		}
 	}
 }

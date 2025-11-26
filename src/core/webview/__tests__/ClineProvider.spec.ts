@@ -1,4 +1,4 @@
-// pnpm --filter roo-cline test core/webview/__tests__/ClineProvider.spec.ts
+﻿// pnpm --filter galaxia test core/webview/__tests__/ClineProvider.spec.ts
 
 import Anthropic from "@anthropic-ai/sdk"
 import * as vscode from "vscode"
@@ -9,8 +9,8 @@ import {
 	type ClineMessage,
 	ORGANIZATION_ALLOW_ALL,
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
 
 import { ExtensionMessage, ExtensionState } from "../../../shared/ExtensionMessage"
 import { defaultModeSlug } from "../../../shared/modes"
@@ -321,7 +321,7 @@ vi.mock("../diff/strategies/multi-search-replace", () => ({
 	})),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@galaxia/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {
@@ -333,7 +333,7 @@ vi.mock("@roo-code/cloud", () => ({
 	BridgeOrchestrator: {
 		isEnabled: vi.fn().mockReturnValue(false),
 	},
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
+	getGalaxiaApiUrl: vi.fn().mockReturnValue(""),
 }))
 
 afterAll(() => {
@@ -486,7 +486,7 @@ describe("ClineProvider", () => {
 
 		// Verify Content Security Policy contains the necessary PostHog domains
 		expect(mockWebviewView.webview.html).toContain(
-			"connect-src vscode-webview://test-csp-source https://openrouter.ai https://api.requesty.ai https://ph.roocode.com",
+			"connect-src vscode-webview://test-csp-source https://openrouter.ai https://api.requesty.ai ",
 		)
 
 		// Extract the script-src directive section and verify required security elements
@@ -2498,7 +2498,7 @@ describe("getTelemetryProperties", () => {
 
 		test("includes cloud authentication property when user is authenticated", async () => {
 			// Import the CloudService mock and update it
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@galaxia/cloud")
 			const mockCloudService = {
 				isAuthenticated: vi.fn().mockReturnValue(true),
 			}
@@ -2516,7 +2516,7 @@ describe("getTelemetryProperties", () => {
 
 		test("includes cloud authentication property when user is not authenticated", async () => {
 			// Import the CloudService mock and update it
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@galaxia/cloud")
 			const mockCloudService = {
 				isAuthenticated: vi.fn().mockReturnValue(false),
 			}
@@ -2534,7 +2534,7 @@ describe("getTelemetryProperties", () => {
 
 		test("handles CloudService errors gracefully", async () => {
 			// Import the CloudService mock and update it to throw an error
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@galaxia/cloud")
 			Object.defineProperty(CloudService, "instance", {
 				get: vi.fn().mockImplementation(() => {
 					throw new Error("CloudService not available")
@@ -2555,7 +2555,7 @@ describe("getTelemetryProperties", () => {
 
 		test("handles CloudService method errors gracefully", async () => {
 			// Import the CloudService mock and update it
-			const { CloudService } = await import("@roo-code/cloud")
+			const { CloudService } = await import("@galaxia/cloud")
 			const mockCloudService = {
 				isAuthenticated: vi.fn().mockImplementation(() => {
 					throw new Error("Authentication check error")

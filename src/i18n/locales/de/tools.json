@@ -1,4 +1,4 @@
-{
+﻿{
 	"readFile": {
 		"linesRange": " (Zeilen {{start}}-{{end}})",
 		"definitionsOnly": " (nur Definitionen)",
@@ -24,7 +24,7 @@
 		"invalidImageFormat": "Ungültiges Bildformat erhalten",
 		"unknownError": "Unbekannter Fehler aufgetreten",
 		"roo": {
-			"authRequired": "Roo Code Cloud-Authentifizierung ist für die Bildgenerierung erforderlich. Bitte melde dich bei Roo Code Cloud an."
+			"authRequired": "Galaxia Cloud-Authentifizierung ist für die Bildgenerierung erforderlich. Bitte melde dich bei Galaxia Cloud an."
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { SEO } from "@/lib/seo"
 import { ogImageUrl } from "@/lib/og"
 import fs from "fs"
@@ -9,7 +9,7 @@ import rehypeRaw from "rehype-raw"
 
 const TITLE = "Our Terms of Service"
 const DESCRIPTION =
-	"Terms of Service for Roo Code Cloud. Learn about our service terms, commercial conditions, and legal framework."
+	"Terms of Service for Galaxia Cloud. Learn about our service terms, commercial conditions, and legal framework."
 const OG_DESCRIPTION = ""
 const PATH = "/terms"
 

@@ -1,4 +1,4 @@
-// npx vitest core/tools/__tests__/newTaskTool.spec.ts
+﻿// npx vitest core/tools/__tests__/newTaskTool.spec.ts
 
 import type { AskApproval, HandleError } from "../../../shared/tools"
 
@@ -14,8 +14,8 @@ vi.mock("vscode", () => ({
 // Mock Package module
 vi.mock("../../../shared/package", () => ({
 	Package: {
-		name: "roo-cline",
-		publisher: "RooVeterinaryInc",
+		name: "galaxia",
+		publisher: "TrigentSoftwareInc",
 		version: "1.0.0",
 		outputChannel: "Roo-Code",
 	},
@@ -571,7 +571,7 @@ describe("newTaskTool", () => {
 			})
 
 			// Verify that VSCode configuration was accessed with Package.name
-			expect(mockGetConfiguration).toHaveBeenCalledWith("roo-cline")
+			expect(mockGetConfiguration).toHaveBeenCalledWith("galaxia")
 			expect(mockGet).toHaveBeenCalledWith("newTaskRequireTodos", false)
 		})
 

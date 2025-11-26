@@ -1,7 +1,7 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 import { type TaskEvent, taskEventSchema } from "./events.js"
-import { rooCodeSettingsSchema } from "./global-settings.js"
+import { GalaxiaSettingsSchema } from "./global-settings.js"
 
 /**
  * IpcMessageType
@@ -56,7 +56,7 @@ export const taskCommandSchema = z.discriminatedUnion("commandName", [
 	z.object({
 		commandName: z.literal(TaskCommandName.StartNewTask),
 		data: z.object({
-			configuration: rooCodeSettingsSchema,
+			configuration: GalaxiaSettingsSchema,
 			text: z.string(),
 			images: z.array(z.string()).optional(),
 			newTab: z.boolean().optional(),

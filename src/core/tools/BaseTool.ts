@@ -7,7 +7,7 @@ import type {
 	AskApproval,
 	NativeToolArgs,
 } from "../../shared/tools"
-import type { ToolName, ToolProtocol } from "@roo-code/types"
+import type { ToolName, ToolProtocol } from "@galaxia/types"
 
 /**
  * Callbacks passed to tool execution

@@ -15,7 +15,7 @@ import type {
 	UserSettingsConfig,
 	UserSettingsData,
 	UserFeatures,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { TaskNotFoundError } from "./errors.js"
 import { WebAuthService } from "./WebAuthService.js"

@@ -1,4 +1,4 @@
-{
+﻿{
 	"readFile": {
 		"linesRange": " (línies {{start}}-{{end}})",
 		"definitionsOnly": " (només definicions)",
@@ -24,7 +24,7 @@
 		"invalidImageFormat": "Format d'imatge no vàlid rebut",
 		"unknownError": "S'ha produït un error desconegut",
 		"roo": {
-			"authRequired": "Es requereix autenticació de Roo Code Cloud per a la generació d'imatges. Inicia sessió a Roo Code Cloud."
+			"authRequired": "Es requereix autenticació de Galaxia Cloud per a la generació d'imatges. Inicia sessió a Galaxia Cloud."
 		}
 	}
 }

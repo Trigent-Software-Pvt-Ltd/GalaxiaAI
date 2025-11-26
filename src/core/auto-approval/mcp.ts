@@ -1,4 +1,4 @@
-import type { McpServerUse } from "@roo-code/types"
+import type { McpServerUse } from "@galaxia/types"
 
 import type { McpServer, McpTool } from "../../shared/mcp"
 

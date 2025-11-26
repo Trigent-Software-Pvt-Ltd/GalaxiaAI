@@ -1,13 +1,13 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 import { clineMessageSchema, tokenUsageSchema } from "./message.js"
 import { toolNamesSchema, toolUsageSchema } from "./tool.js"
 
 /**
- * RooCodeEventName
+ * GalaxiaEventName
  */
 
-export enum RooCodeEventName {
+export enum GalaxiaEventName {
 	// Task Provider Lifecycle
 	TaskCreated = "taskCreated",
 
@@ -47,14 +47,14 @@ export enum RooCodeEventName {
 }
 
 /**
- * RooCodeEvents
+ * GalaxiaEvents
  */
 
-export const rooCodeEventsSchema = z.object({
-	[RooCodeEventName.TaskCreated]: z.tuple([z.string()]),
+export const GalaxiaEventsSchema = z.object({
+	[GalaxiaEventName.TaskCreated]: z.tuple([z.string()]),
 
-	[RooCodeEventName.TaskStarted]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskCompleted]: z.tuple([
+	[GalaxiaEventName.TaskStarted]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskCompleted]: z.tuple([
 		z.string(),
 		tokenUsageSchema,
 		toolUsageSchema,
@@ -62,37 +62,37 @@ export const rooCodeEventsSchema = z.object({
 			isSubtask: z.boolean(),
 		}),
 	]),
-	[RooCodeEventName.TaskAborted]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskFocused]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskUnfocused]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskActive]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskInteractive]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskResumable]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskIdle]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskAborted]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskFocused]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskUnfocused]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskActive]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskInteractive]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskResumable]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskIdle]: z.tuple([z.string()]),
 
-	[RooCodeEventName.TaskPaused]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskUnpaused]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskSpawned]: z.tuple([z.string(), z.string()]),
+	[GalaxiaEventName.TaskPaused]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskUnpaused]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskSpawned]: z.tuple([z.string(), z.string()]),
 
-	[RooCodeEventName.Message]: z.tuple([
+	[GalaxiaEventName.Message]: z.tuple([
 		z.object({
 			taskId: z.string(),
 			action: z.union([z.literal("created"), z.literal("updated")]),
 			message: clineMessageSchema,
 		}),
 	]),
-	[RooCodeEventName.TaskModeSwitched]: z.tuple([z.string(), z.string()]),
-	[RooCodeEventName.TaskAskResponded]: z.tuple([z.string()]),
-	[RooCodeEventName.TaskUserMessage]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskModeSwitched]: z.tuple([z.string(), z.string()]),
+	[GalaxiaEventName.TaskAskResponded]: z.tuple([z.string()]),
+	[GalaxiaEventName.TaskUserMessage]: z.tuple([z.string()]),
 
-	[RooCodeEventName.TaskToolFailed]: z.tuple([z.string(), toolNamesSchema, z.string()]),
-	[RooCodeEventName.TaskTokenUsageUpdated]: z.tuple([z.string(), tokenUsageSchema]),
+	[GalaxiaEventName.TaskToolFailed]: z.tuple([z.string(), toolNamesSchema, z.string()]),
+	[GalaxiaEventName.TaskTokenUsageUpdated]: z.tuple([z.string(), tokenUsageSchema]),
 
-	[RooCodeEventName.ModeChanged]: z.tuple([z.string()]),
-	[RooCodeEventName.ProviderProfileChanged]: z.tuple([z.object({ name: z.string(), provider: z.string() })]),
+	[GalaxiaEventName.ModeChanged]: z.tuple([z.string()]),
+	[GalaxiaEventName.ProviderProfileChanged]: z.tuple([z.object({ name: z.string(), provider: z.string() })]),
 })
 
-export type RooCodeEvents = z.infer<typeof rooCodeEventsSchema>
+export type GalaxiaEvents = z.infer<typeof GalaxiaEventsSchema>
 
 /**
  * TaskEvent
@@ -101,112 +101,112 @@ export type RooCodeEvents = z.infer<typeof rooCodeEventsSchema>
 export const taskEventSchema = z.discriminatedUnion("eventName", [
 	// Task Provider Lifecycle
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskCreated),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskCreated],
+		eventName: z.literal(GalaxiaEventName.TaskCreated),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskCreated],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Lifecycle
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskStarted),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskStarted],
+		eventName: z.literal(GalaxiaEventName.TaskStarted),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskStarted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskCompleted),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskCompleted],
+		eventName: z.literal(GalaxiaEventName.TaskCompleted),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskCompleted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskAborted),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskAborted],
+		eventName: z.literal(GalaxiaEventName.TaskAborted),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskAborted],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskFocused),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskFocused],
+		eventName: z.literal(GalaxiaEventName.TaskFocused),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskFocused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskUnfocused),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskUnfocused],
+		eventName: z.literal(GalaxiaEventName.TaskUnfocused),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskUnfocused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskActive),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskActive],
+		eventName: z.literal(GalaxiaEventName.TaskActive),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskActive],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskInteractive),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskInteractive],
+		eventName: z.literal(GalaxiaEventName.TaskInteractive),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskInteractive],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskResumable),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskResumable],
+		eventName: z.literal(GalaxiaEventName.TaskResumable),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskResumable],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskIdle),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskIdle],
+		eventName: z.literal(GalaxiaEventName.TaskIdle),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskIdle],
 		taskId: z.number().optional(),
 	}),
 
 	// Subtask Lifecycle
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskPaused),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskPaused],
+		eventName: z.literal(GalaxiaEventName.TaskPaused),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskPaused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskUnpaused),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskUnpaused],
+		eventName: z.literal(GalaxiaEventName.TaskUnpaused),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskUnpaused],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskSpawned),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskSpawned],
+		eventName: z.literal(GalaxiaEventName.TaskSpawned),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskSpawned],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Execution
 	z.object({
-		eventName: z.literal(RooCodeEventName.Message),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.Message],
+		eventName: z.literal(GalaxiaEventName.Message),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.Message],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskModeSwitched),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskModeSwitched],
+		eventName: z.literal(GalaxiaEventName.TaskModeSwitched),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskModeSwitched],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskAskResponded),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskAskResponded],
+		eventName: z.literal(GalaxiaEventName.TaskAskResponded),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskAskResponded],
 		taskId: z.number().optional(),
 	}),
 
 	// Task Analytics
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskToolFailed),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskToolFailed],
+		eventName: z.literal(GalaxiaEventName.TaskToolFailed),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskToolFailed],
 		taskId: z.number().optional(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.TaskTokenUsageUpdated),
-		payload: rooCodeEventsSchema.shape[RooCodeEventName.TaskTokenUsageUpdated],
+		eventName: z.literal(GalaxiaEventName.TaskTokenUsageUpdated),
+		payload: GalaxiaEventsSchema.shape[GalaxiaEventName.TaskTokenUsageUpdated],
 		taskId: z.number().optional(),
 	}),
 
 	// Evals
 	z.object({
-		eventName: z.literal(RooCodeEventName.EvalPass),
+		eventName: z.literal(GalaxiaEventName.EvalPass),
 		payload: z.undefined(),
 		taskId: z.number(),
 	}),
 	z.object({
-		eventName: z.literal(RooCodeEventName.EvalFail),
+		eventName: z.literal(GalaxiaEventName.EvalFail),
 		payload: z.undefined(),
 		taskId: z.number(),
 	}),

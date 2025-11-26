@@ -1,4 +1,4 @@
-import { Anthropic } from "@anthropic-ai/sdk"
+﻿import { Anthropic } from "@anthropic-ai/sdk"
 
 import { IOIntelligenceHandler } from "../io-intelligence"
 import type { ApiHandlerOptions } from "../../../shared/api"
@@ -60,7 +60,7 @@ vi.mock("../fetchers/io-intelligence", () => ({
 
 // Mock constants
 vi.mock("../constants", () => ({
-	DEFAULT_HEADERS: { "User-Agent": "roo-cline" },
+	DEFAULT_HEADERS: { "User-Agent": "galaxia" },
 }))
 
 // Mock transform functions

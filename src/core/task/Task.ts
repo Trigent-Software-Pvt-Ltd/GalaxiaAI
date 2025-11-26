@@ -1,4 +1,4 @@
-import * as path from "path"
+﻿import * as path from "path"
 import * as vscode from "vscode"
 import os from "os"
 import crypto from "crypto"
@@ -28,7 +28,7 @@ import {
 	type HistoryItem,
 	type CreateTaskOptions,
 	type ModelInfo,
-	RooCodeEventName,
+	GalaxiaEventName,
 	TelemetryEventName,
 	TaskStatus,
 	TodoItem,
@@ -44,9 +44,9 @@ import {
 	MAX_CHECKPOINT_TIMEOUT_SECONDS,
 	MIN_CHECKPOINT_TIMEOUT_SECONDS,
 	TOOL_PROTOCOL,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
+} from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
+import { CloudService, BridgeOrchestrator } from "@galaxia/cloud"
 import { resolveToolProtocol } from "../../utils/resolveToolProtocol"
 
 // api
@@ -452,7 +452,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.messageQueueService = new MessageQueueService()
 
 		this.messageQueueStateChangedHandler = () => {
-			this.emit(RooCodeEventName.TaskUserMessage, this.taskId)
+			this.emit(GalaxiaEventName.TaskUserMessage, this.taskId)
 			this.providerRef.deref()?.postStateToWebview()
 		}
 
@@ -560,7 +560,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			}
 		}
 
-		provider.on(RooCodeEventName.ProviderProfileChanged, this.providerProfileChangeListener)
+		provider.on(GalaxiaEventName.ProviderProfileChanged, this.providerProfileChangeListener)
 	}
 
 	/**
@@ -802,7 +802,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.clineMessages.push(message)
 		const provider = this.providerRef.deref()
 		await provider?.postStateToWebview()
-		this.emit(RooCodeEventName.Message, { action: "created", message })
+		this.emit(GalaxiaEventName.Message, { action: "created", message })
 		await this.saveClineMessages()
 
 		const shouldCaptureMessage = message.partial !== true && CloudService.isEnabled()
@@ -835,7 +835,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 	private async updateClineMessage(message: ClineMessage) {
 		const provider = this.providerRef.deref()
 		await provider?.postMessageToWebview({ type: "messageUpdated", clineMessage: message })
-		this.emit(RooCodeEventName.Message, { action: "updated", message })
+		this.emit(GalaxiaEventName.Message, { action: "updated", message })
 
 		// Check if we should sync to cloud and haven't already synced this message
 		const shouldCaptureMessage = message.partial !== true && CloudService.isEnabled()
@@ -871,7 +871,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			})
 
 			if (hasTokenUsageChanged(tokenUsage, this.tokenUsageSnapshot)) {
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, this.taskId, tokenUsage)
+				this.emit(GalaxiaEventName.TaskTokenUsageUpdated, this.taskId, tokenUsage)
 				this.tokenUsageSnapshot = undefined
 				this.tokenUsageSnapshotAt = undefined
 			}
@@ -911,7 +911,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		// simply removes the reference to this instance, but the instance is
 		// still alive until this promise resolves or rejects.)
 		if (this.abort) {
-			throw new Error(`[RooCode#ask] task ${this.taskId}.${this.instanceId} aborted`)
+			throw new Error(`[Galaxia#ask] task ${this.taskId}.${this.instanceId} aborted`)
 		}
 
 		let askTs: number
@@ -1038,7 +1038,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.interactiveAsk = message
-							this.emit(RooCodeEventName.TaskInteractive, this.taskId)
+							this.emit(GalaxiaEventName.TaskInteractive, this.taskId)
 							provider?.postMessageToWebview({ type: "interactionRequired" })
 						}
 					}, statusMutationTimeout),
@@ -1050,7 +1050,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.resumableAsk = message
-							this.emit(RooCodeEventName.TaskResumable, this.taskId)
+							this.emit(GalaxiaEventName.TaskResumable, this.taskId)
 						}
 					}, statusMutationTimeout),
 				)
@@ -1061,7 +1061,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 						if (message) {
 							this.idleAsk = message
-							this.emit(RooCodeEventName.TaskIdle, this.taskId)
+							this.emit(GalaxiaEventName.TaskIdle, this.taskId)
 						}
 					}, statusMutationTimeout),
 				)
@@ -1114,10 +1114,10 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			this.idleAsk = undefined
 			this.resumableAsk = undefined
 			this.interactiveAsk = undefined
-			this.emit(RooCodeEventName.TaskActive, this.taskId)
+			this.emit(GalaxiaEventName.TaskActive, this.taskId)
 		}
 
-		this.emit(RooCodeEventName.TaskAskResponded)
+		this.emit(GalaxiaEventName.TaskAskResponded)
 		return result
 	}
 
@@ -1226,7 +1226,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 					}
 				}
 
-				this.emit(RooCodeEventName.TaskUserMessage, this.taskId)
+				this.emit(GalaxiaEventName.TaskUserMessage, this.taskId)
 
 				provider.postMessageToWebview({ type: "invoke", invoke: "sendMessage", text, images })
 			} else {
@@ -1338,7 +1338,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		contextCondense?: ContextCondense,
 	): Promise<undefined> {
 		if (this.abort) {
-			throw new Error(`[RooCode#say] task ${this.taskId}.${this.instanceId} aborted`)
+			throw new Error(`[Galaxia#say] task ${this.taskId}.${this.instanceId} aborted`)
 		}
 
 		if (partial !== undefined) {
@@ -1783,7 +1783,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		}
 
 		this.abort = true
-		this.emit(RooCodeEventName.TaskAborted)
+		this.emit(GalaxiaEventName.TaskAborted)
 
 		try {
 			this.dispose() // Call the centralized dispose method
@@ -1815,7 +1815,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			if (this.providerProfileChangeListener) {
 				const provider = this.providerRef.deref()
 				if (provider) {
-					provider.off(RooCodeEventName.ProviderProfileChanged, this.providerProfileChangeListener)
+					provider.off(GalaxiaEventName.ProviderProfileChanged, this.providerProfileChangeListener)
 				}
 				this.providerProfileChangeListener = undefined
 			}
@@ -1933,8 +1933,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			await provider.handleModeSwitch(mode) // Set child's mode.
 			await delay(500) // Allow mode change to take effect.
 
-			this.emit(RooCodeEventName.TaskPaused, this.taskId)
-			this.emit(RooCodeEventName.TaskSpawned, newTask.taskId)
+			this.emit(GalaxiaEventName.TaskPaused, this.taskId)
+			this.emit(GalaxiaEventName.TaskSpawned, newTask.taskId)
 		}
 
 		return newTask
@@ -1959,7 +1959,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.isPaused = false
 		this.childTaskId = undefined
 
-		this.emit(RooCodeEventName.TaskUnpaused, this.taskId)
+		this.emit(GalaxiaEventName.TaskUnpaused, this.taskId)
 
 		// Fake an answer from the subtask that it has completed running and
 		// this is the result of what it has done add the message to the chat
@@ -1989,7 +1989,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		let nextUserContent = userContent
 		let includeFileDetails = true
 
-		this.emit(RooCodeEventName.TaskStarted)
+		this.emit(GalaxiaEventName.TaskStarted)
 
 		while (!this.abort) {
 			const didEndLoop = await this.recursivelyMakeClineRequests(nextUserContent, includeFileDetails)
@@ -2039,7 +2039,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 			const currentIncludeFileDetails = currentItem.includeFileDetails
 
 			if (this.abort) {
-				throw new Error(`[RooCode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
+				throw new Error(`[Galaxia#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`)
 			}
 
 			if (this.consecutiveMistakeLimit > 0 && this.consecutiveMistakeCount >= this.consecutiveMistakeLimit) {
@@ -2818,7 +2818,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 				// Need to call here in case the stream was aborted.
 				if (this.abort || this.abandoned) {
 					throw new Error(
-						`[RooCode#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`,
+						`[Galaxia#recursivelyMakeRooRequests] task ${this.taskId}.${this.instanceId} aborted`,
 					)
 				}
 
@@ -3828,7 +3828,7 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 		this.toolUsage[toolName].failures++
 
 		if (error) {
-			this.emit(RooCodeEventName.TaskToolFailed, this.taskId, toolName, error)
+			this.emit(GalaxiaEventName.TaskToolFailed, this.taskId, toolName, error)
 		}
 	}
 

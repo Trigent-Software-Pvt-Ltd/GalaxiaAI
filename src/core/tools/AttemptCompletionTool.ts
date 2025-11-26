@@ -1,8 +1,8 @@
-import Anthropic from "@anthropic-ai/sdk"
+﻿import Anthropic from "@anthropic-ai/sdk"
 import * as vscode from "vscode"
 
-import { RooCodeEventName } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+import { GalaxiaEventName } from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
 
 import { Task } from "../task/Task"
 import { formatResponse } from "../prompts/responses"
@@ -75,7 +75,7 @@ export class AttemptCompletionTool extends BaseTool<"attempt_completion"> {
 
 			await task.say("completion_result", result, undefined, false)
 			TelemetryService.instance.captureTaskCompleted(task.taskId)
-			task.emit(RooCodeEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
+			task.emit(GalaxiaEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
 
 			if (task.parentTask) {
 				const didApprove = await askFinishSubTaskApproval()
@@ -126,7 +126,7 @@ export class AttemptCompletionTool extends BaseTool<"attempt_completion"> {
 				)
 
 				TelemetryService.instance.captureTaskCompleted(task.taskId)
-				task.emit(RooCodeEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
+				task.emit(GalaxiaEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
 
 				await task
 					.ask("command", this.removeClosingTag("command", command, block.partial), block.partial)

@@ -1,14 +1,14 @@
-import * as path from "path"
+﻿import * as path from "path"
 import Mocha from "mocha"
 import { glob } from "glob"
 import * as vscode from "vscode"
 
-import type { RooCodeAPI } from "@roo-code/types"
+import type { GalaxiaAPI } from "@galaxia/types"
 
 import { waitFor } from "./utils"
 
 export async function run() {
-	const extension = vscode.extensions.getExtension<RooCodeAPI>("RooVeterinaryInc.roo-cline")
+	const extension = vscode.extensions.getExtension<GalaxiaAPI>("TrigentSoftwareInc.galaxia")
 
 	if (!extension) {
 		throw new Error("Extension not found")
@@ -22,7 +22,7 @@ export async function run() {
 		openRouterModelId: "openai/gpt-4.1",
 	})
 
-	await vscode.commands.executeCommand("roo-cline.SidebarProvider.focus")
+	await vscode.commands.executeCommand("galaxia.SidebarProvider.focus")
 	await waitFor(() => api.isReady())
 
 	globalThis.api = api

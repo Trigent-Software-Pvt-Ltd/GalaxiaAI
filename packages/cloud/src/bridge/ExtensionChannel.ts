@@ -1,4 +1,4 @@
-import type { Socket } from "socket.io-client"
+﻿import type { Socket } from "socket.io-client"
 
 import {
 	type TaskProviderLike,
@@ -6,13 +6,13 @@ import {
 	type ExtensionInstance,
 	type ExtensionBridgeCommand,
 	type ExtensionBridgeEvent,
-	RooCodeEventName,
+	GalaxiaEventName,
 	TaskStatus,
 	ExtensionBridgeCommandName,
 	ExtensionBridgeEventName,
 	ExtensionSocketEvents,
 	HEARTBEAT_INTERVAL_MS,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { type BaseChannelOptions, BaseChannel } from "./BaseChannel.js"
 
@@ -34,7 +34,7 @@ export class ExtensionChannel extends BaseChannel<
 	private provider: TaskProviderLike
 	private extensionInstance: ExtensionInstance
 	private heartbeatInterval: NodeJS.Timeout | null = null
-	private eventListeners: Map<RooCodeEventName, (...args: unknown[]) => void> = new Map()
+	private eventListeners: Map<GalaxiaEventName, (...args: unknown[]) => void> = new Map()
 
 	constructor(options: ExtensionChannelOptions) {
 		super({
@@ -175,21 +175,21 @@ export class ExtensionChannel extends BaseChannel<
 
 	private setupListeners(): void {
 		const eventMapping = [
-			{ from: RooCodeEventName.TaskCreated, to: ExtensionBridgeEventName.TaskCreated },
-			{ from: RooCodeEventName.TaskStarted, to: ExtensionBridgeEventName.TaskStarted },
-			{ from: RooCodeEventName.TaskCompleted, to: ExtensionBridgeEventName.TaskCompleted },
-			{ from: RooCodeEventName.TaskAborted, to: ExtensionBridgeEventName.TaskAborted },
-			{ from: RooCodeEventName.TaskFocused, to: ExtensionBridgeEventName.TaskFocused },
-			{ from: RooCodeEventName.TaskUnfocused, to: ExtensionBridgeEventName.TaskUnfocused },
-			{ from: RooCodeEventName.TaskActive, to: ExtensionBridgeEventName.TaskActive },
-			{ from: RooCodeEventName.TaskInteractive, to: ExtensionBridgeEventName.TaskInteractive },
-			{ from: RooCodeEventName.TaskResumable, to: ExtensionBridgeEventName.TaskResumable },
-			{ from: RooCodeEventName.TaskIdle, to: ExtensionBridgeEventName.TaskIdle },
-			{ from: RooCodeEventName.TaskPaused, to: ExtensionBridgeEventName.TaskPaused },
-			{ from: RooCodeEventName.TaskUnpaused, to: ExtensionBridgeEventName.TaskUnpaused },
-			{ from: RooCodeEventName.TaskSpawned, to: ExtensionBridgeEventName.TaskSpawned },
-			{ from: RooCodeEventName.TaskUserMessage, to: ExtensionBridgeEventName.TaskUserMessage },
-			{ from: RooCodeEventName.TaskTokenUsageUpdated, to: ExtensionBridgeEventName.TaskTokenUsageUpdated },
+			{ from: GalaxiaEventName.TaskCreated, to: ExtensionBridgeEventName.TaskCreated },
+			{ from: GalaxiaEventName.TaskStarted, to: ExtensionBridgeEventName.TaskStarted },
+			{ from: GalaxiaEventName.TaskCompleted, to: ExtensionBridgeEventName.TaskCompleted },
+			{ from: GalaxiaEventName.TaskAborted, to: ExtensionBridgeEventName.TaskAborted },
+			{ from: GalaxiaEventName.TaskFocused, to: ExtensionBridgeEventName.TaskFocused },
+			{ from: GalaxiaEventName.TaskUnfocused, to: ExtensionBridgeEventName.TaskUnfocused },
+			{ from: GalaxiaEventName.TaskActive, to: ExtensionBridgeEventName.TaskActive },
+			{ from: GalaxiaEventName.TaskInteractive, to: ExtensionBridgeEventName.TaskInteractive },
+			{ from: GalaxiaEventName.TaskResumable, to: ExtensionBridgeEventName.TaskResumable },
+			{ from: GalaxiaEventName.TaskIdle, to: ExtensionBridgeEventName.TaskIdle },
+			{ from: GalaxiaEventName.TaskPaused, to: ExtensionBridgeEventName.TaskPaused },
+			{ from: GalaxiaEventName.TaskUnpaused, to: ExtensionBridgeEventName.TaskUnpaused },
+			{ from: GalaxiaEventName.TaskSpawned, to: ExtensionBridgeEventName.TaskSpawned },
+			{ from: GalaxiaEventName.TaskUserMessage, to: ExtensionBridgeEventName.TaskUserMessage },
+			{ from: GalaxiaEventName.TaskTokenUsageUpdated, to: ExtensionBridgeEventName.TaskTokenUsageUpdated },
 		] as const
 
 		eventMapping.forEach(({ from, to }) => {

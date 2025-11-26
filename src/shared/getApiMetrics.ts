@@ -1,4 +1,4 @@
-import type { TokenUsage, ClineMessage } from "@roo-code/types"
+import type { TokenUsage, ClineMessage } from "@galaxia/types"
 
 export type ParsedApiReqStartedTextType = {
 	tokensIn: number

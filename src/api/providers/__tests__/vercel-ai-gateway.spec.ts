@@ -1,4 +1,4 @@
-// npx vitest run src/api/providers/__tests__/vercel-ai-gateway.spec.ts
+﻿// npx vitest run src/api/providers/__tests__/vercel-ai-gateway.spec.ts
 
 // Mock vscode first to avoid import errors
 vitest.mock("vscode", () => ({}))
@@ -8,7 +8,7 @@ import OpenAI from "openai"
 
 import { VercelAiGatewayHandler } from "../vercel-ai-gateway"
 import { ApiHandlerOptions } from "../../../shared/api"
-import { vercelAiGatewayDefaultModelId, VERCEL_AI_GATEWAY_DEFAULT_TEMPERATURE } from "@roo-code/types"
+import { vercelAiGatewayDefaultModelId, VERCEL_AI_GATEWAY_DEFAULT_TEMPERATURE } from "@galaxia/types"
 
 // Mock dependencies
 vitest.mock("openai")
@@ -95,9 +95,9 @@ describe("VercelAiGatewayHandler", () => {
 			baseURL: "https://ai-gateway.vercel.sh/v1",
 			apiKey: mockOptions.vercelAiGatewayApiKey,
 			defaultHeaders: expect.objectContaining({
-				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-				"X-Title": "Roo Code",
-				"User-Agent": expect.stringContaining("RooCode/"),
+				"HTTP-Referer": "https://github.com/RooVetGit/galaxia",
+				"X-Title": "Galaxia",
+				"User-Agent": expect.stringContaining("Galaxia/"),
 			}),
 		})
 	})

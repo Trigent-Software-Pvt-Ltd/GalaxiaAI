@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useEffect, useMemo, useState } from "react"
 import { ModelCard } from "./components/model-card"
@@ -6,7 +6,7 @@ import { Model, ModelWithTotalPrice, ModelsResponse, SortOption } from "@/lib/ty
 import Link from "next/link"
 import { ChevronDown, CircleX, Loader, LoaderCircle, Search } from "lucide-react"
 
-const API_URL = "https://api.roocode.com/proxy/v1/models?include_paid=true"
+const API_URL = "/proxy/v1/models?include_paid=true"
 
 const faqs = [
 	{
@@ -18,10 +18,10 @@ const faqs = [
 		answer: "Pricing is based on token usage for input and output, measured per million tokens, like pretty much any other provider out there.",
 	},
 	{
-		question: "What is the Roo Code Cloud Provider?",
+		question: "What is the Galaxia Cloud Provider?",
 		answer: (
 			<>
-				<p>This is our very own model provider, optimized to work seamlessly with Roo Code Cloud.</p>
+				<p>This is our very own model provider, optimized to work seamlessly with Galaxia Cloud.</p>
 				<p>
 					It offers a selection of state-of-the-art LLMs (both closed and open weight) we know work well with
 					Roo for you to choose, with no markup.
@@ -34,7 +34,7 @@ const faqs = [
 		),
 	},
 	{
-		question: "But how much does the Roo Code Cloud service cost?",
+		question: "But how much does the Galaxia Cloud service cost?",
 		answer: (
 			<>
 				Our{" "}
@@ -134,7 +134,7 @@ export default function ProviderPricingPage() {
 				<div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center">
 						<h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-							Roo Code Cloud Provider Pricing
+							Galaxia Cloud Provider Pricing
 						</h1>
 						<p className="mx-auto mt-4 max-w-2xl md:text-lg text-muted-foreground">
 							See pricing and features for all models we offer in our selection.

@@ -1,5 +1,5 @@
-{
-	"greeting": "Roo Code'a Hoş Geldiniz",
+﻿{
+	"greeting": "Galaxia'a Hoş Geldiniz",
 	"task": {
 		"title": "Görev",
 		"expand": "Görevi genişlet",
@@ -21,11 +21,11 @@
 		"sharePublicly": "Herkese açık paylaş",
 		"sharePubliclyDescription": "Bağlantıya sahip herkes erişebilir",
 		"connectToCloud": "Buluta bağlan",
-		"connectToCloudDescription": "Görevleri paylaşmak için Roo Code Cloud'a giriş yap",
+		"connectToCloudDescription": "Görevleri paylaşmak için Galaxia Cloud'a giriş yap",
 		"sharingDisabledByOrganization": "Paylaşım kuruluş tarafından devre dışı bırakıldı",
 		"shareSuccessOrganization": "Organizasyon bağlantısı panoya kopyalandı",
 		"shareSuccessPublic": "Genel bağlantı panoya kopyalandı",
-		"openInCloud": "Görevi Roo Code Cloud'da aç",
+		"openInCloud": "Görevi Galaxia Cloud'da aç",
 		"openInCloudIntro": "Roo'yu her yerden izlemeye veya etkileşime devam et. Açmak için tara, tıkla veya kopyala."
 	},
 	"unpin": "Sabitlemeyi iptal et",
@@ -85,7 +85,7 @@
 		"tooltip": "Mevcut işlemi iptal et"
 	},
 	"scrollToBottom": "Sohbetin altına kaydır",
-	"about": "Roo Code, düzenleyicinizdeki bütün bir yapay zeka geliştirme ekibidir.",
+	"about": "Galaxia, düzenleyicinizdeki bütün bir yapay zeka geliştirme ekibidir.",
 	"docs": "Daha fazla bilgi için <DocsLink>belgelerimize</DocsLink> göz atın.",
 	"onboarding": "Bu çalışma alanındaki görev listeniz boş.",
 	"rooTips": {
@@ -283,18 +283,18 @@
 		"countdownDisplay": "{{count}}sn"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} Yayınlandı",
+		"title": "🎉 Galaxia {{version}} Yayınlandı",
 		"stealthModel": {
-			"feature": "<bold>Sınırlı süre ÜCRETSİZ gizli model</bold> - Code Supernova: Artık <bold>1M token bağlam penceresi</bold> ile yükseltildi! Görüntü girişlerini destekleyen çok amaçlı acentik kodlama modeli, Roo Code Cloud üzerinden kullanılabilir.",
+			"feature": "<bold>Sınırlı süre ÜCRETSİZ gizli model</bold> - Code Supernova: Artık <bold>1M token bağlam penceresi</bold> ile yükseltildi! Görüntü girişlerini destekleyen çok amaçlı acentik kodlama modeli, Galaxia Cloud üzerinden kullanılabilir.",
 			"note": "(Not: istemler ve tamamlamalar model yaratıcısı tarafından kaydedilir ve modeli geliştirmek için kullanılır)",
-			"connectButton": "Roo Code Cloud'a bağlan",
-			"selectModel": "Başlamak için Ayarlar'da Roo Code Cloud sağlayıcısından <code>roo/code-supernova</code>'yı seçin.",
+			"connectButton": "Galaxia Cloud'a bağlan",
+			"selectModel": "Başlamak için Ayarlar'da Galaxia Cloud sağlayıcısından <code>roo/code-supernova</code>'yı seçin.",
 			"goToSettingsButton": "Ayarlar'a Git"
 		},
 		"release": {
 			"heading": "Bu sürümdeki yenilikler:",
 			"browserUse": "Browser Use 2.0, kalıcı oturumlar, daha net geri bildirim, özel tarayıcı paneli ve daha doğal eylem açıklamalarıyla sohbet içi tarayıcı deneyimini yükseltir",
-			"cloudPaid": "Roo Code Cloud sağlayıcısı artık ücretli modeller sunuyor: kredi satın alın ve bunları hem bulut ajanları hem de çıkarım için kullanın"
+			"cloudPaid": "Galaxia Cloud sağlayıcısı artık ücretli modeller sunuyor: kredi satın alın ve bunları hem bulut ajanları hem de çıkarım için kullanın"
 		},
 		"cloudAgents": {
 			"heading": "Cloud'daki yenilikler:",
@@ -303,7 +303,7 @@
 			"tryButton": "Bulut Ajanlarını Dene"
 		},
 		"careers": "Ayrıca, <careersLink>işe alım yapıyoruz!</careersLink>",
-		"socialLinks": "Bize <xLink>X</xLink>, <discordLink>Discord</discordLink>, veya <redditLink>r/RooCode</redditLink>'da katılın 🚀"
+		"socialLinks": "Bize <xLink>X</xLink>, <discordLink>Discord</discordLink>, veya <redditLink>r/Galaxia</redditLink>'da katılın 🚀"
 	},
 	"browser": {
 		"session": "Tarayıcı Oturumu",
@@ -341,7 +341,7 @@
 	"profileViolationWarning": "Geçerli profil kuruluşunuzun ayarlarıyla uyumlu değil",
 	"shellIntegration": {
 		"title": "Komut Çalıştırma Uyarısı",
-		"description": "Komutunuz VSCode terminal kabuk entegrasyonu olmadan çalıştırılıyor. Bu uyarıyı gizlemek için <settingsLink>Roo Code ayarları</settingsLink>'nın <strong>Terminal</strong> bölümünden kabuk entegrasyonunu devre dışı bırakabilir veya aşağıdaki bağlantıyı kullanarak VSCode terminal entegrasyonu sorunlarını giderebilirsiniz.",
+		"description": "Komutunuz VSCode terminal kabuk entegrasyonu olmadan çalıştırılıyor. Bu uyarıyı gizlemek için <settingsLink>Galaxia ayarları</settingsLink>'nın <strong>Terminal</strong> bölümünden kabuk entegrasyonunu devre dışı bırakabilir veya aşağıdaki bağlantıyı kullanarak VSCode terminal entegrasyonu sorunlarını giderebilirsiniz.",
 		"troubleshooting": "Kabuk entegrasyonu belgelerini görmek için buraya tıklayın."
 	},
 	"ask": {
@@ -382,7 +382,7 @@
 		"ariaLabel": "Sürüm {{version}} - Sürüm notlarını görüntülemek için tıklayın"
 	},
 	"rooCloudCTA": {
-		"title": "Roo Code Cloud gelişiyor!",
+		"title": "Galaxia Cloud gelişiyor!",
 		"description": "Bulutta uzak ajanlar çalıştırın, görevlerinize her yerden erişin, başkalarıyla işbirliği yapın ve daha fazlası.",
 		"joinWaitlist": "En son güncellemeleri almak için kaydolun."
 	},

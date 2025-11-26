@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react"
+﻿import { useEffect, useRef, useState } from "react"
 import { VSCodeProgressRing, VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 
-import { type CloudUserInfo, type CloudOrganizationMembership, TelemetryEventName } from "@roo-code/types"
+import { type CloudUserInfo, type CloudOrganizationMembership, TelemetryEventName } from "@galaxia/types"
 
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
@@ -17,7 +17,7 @@ import { OrganizationSwitcher } from "./OrganizationSwitcher"
 import { StandardTooltip } from "../ui"
 
 // Define the production URL constant locally to avoid importing from cloud package in tests
-const PRODUCTION_ROO_CODE_API_URL = "https://app.roocode.com"
+const PRODUCTION_GALAXIA_API_URL = ""
 
 type CloudViewProps = {
 	userInfo: CloudUserInfo | null
@@ -135,7 +135,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, onDone, orga
 		// Send telemetry for cloud website visit
 		// NOTE: Using ACCOUNT_* telemetry events for backward compatibility with analytics
 		telemetryClient.capture(TelemetryEventName.ACCOUNT_CONNECT_CLICKED)
-		const cloudUrl = cloudApiUrl || PRODUCTION_ROO_CODE_API_URL
+		const cloudUrl = cloudApiUrl || PRODUCTION_GALAXIA_API_URL
 		vscode.postMessage({ type: "openExternal", url: cloudUrl })
 	}
 
@@ -309,7 +309,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, onDone, orga
 										value={manualUrl}
 										onChange={handleManualUrlChange}
 										onKeyDown={handleKeyDown}
-										placeholder="vscode://RooVeterinaryInc.roo-cline/auth/clerk/callback?state=..."
+										placeholder="vscode://TrigentSoftwareInc.galaxia/auth/clerk/callback?state=..."
 										className="w-full"
 									/>
 									<p className="mt-1">
@@ -325,7 +325,7 @@ export const CloudView = ({ userInfo, isAuthenticated, cloudApiUrl, onDone, orga
 						</div>
 					</>
 				)}
-				{cloudApiUrl && cloudApiUrl !== PRODUCTION_ROO_CODE_API_URL && (
+				{cloudApiUrl && cloudApiUrl !== PRODUCTION_GALAXIA_API_URL && (
 					<div className="ml-4 mt-6 flex">
 						<div className="inline-flex items-center gap-2 text-xs">
 							<TriangleAlert className="size-3 text-vscode-descriptionForeground" />

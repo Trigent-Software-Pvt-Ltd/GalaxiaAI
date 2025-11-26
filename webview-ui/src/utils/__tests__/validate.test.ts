@@ -1,4 +1,4 @@
-import type { ProviderSettings, OrganizationAllowList } from "@roo-code/types"
+import type { ProviderSettings, OrganizationAllowList } from "@galaxia/types"
 
 import { RouterModels } from "@roo/api"
 

@@ -1,4 +1,4 @@
-{
+﻿{
 	"readFile": {
 		"linesRange": " (satır {{start}}-{{end}})",
 		"definitionsOnly": " (sadece tanımlar)",
@@ -24,7 +24,7 @@
 		"invalidImageFormat": "Geçersiz görüntü formatı alındı",
 		"unknownError": "Bilinmeyen bir hata oluştu",
 		"roo": {
-			"authRequired": "Görüntü oluşturma için Roo Code Cloud kimlik doğrulaması gereklidir. Lütfen Roo Code Cloud'da oturum açın."
+			"authRequired": "Görüntü oluşturma için Galaxia Cloud kimlik doğrulaması gereklidir. Lütfen Galaxia Cloud'da oturum açın."
 		}
 	}
 }

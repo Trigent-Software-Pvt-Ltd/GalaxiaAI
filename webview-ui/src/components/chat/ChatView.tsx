@@ -11,11 +11,11 @@ import { Trans } from "react-i18next"
 import { useDebounceEffect } from "@src/utils/useDebounceEffect"
 import { appendImages } from "@src/utils/imageUtils"
 
-import type { ClineAsk, ClineMessage } from "@roo-code/types"
+import type { ClineAsk, ClineMessage } from "@galaxia/types"
 
 import { ClineSayTool, ExtensionMessage } from "@roo/ExtensionMessage"
 import { findLast } from "@roo/array"
-import { SuggestionItem } from "@roo-code/types"
+import { SuggestionItem } from "@galaxia/types"
 import { combineApiRequests } from "@roo/combineApiRequests"
 import { combineCommandSequences } from "@roo/combineCommandSequences"
 import { getApiMetrics } from "@roo/getApiMetrics"

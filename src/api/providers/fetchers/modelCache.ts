@@ -1,12 +1,12 @@
-import * as path from "path"
+﻿import * as path from "path"
 import fs from "fs/promises"
 import * as fsSync from "fs"
 
 import NodeCache from "node-cache"
 import { z } from "zod"
 
-import type { ProviderName } from "@roo-code/types"
-import { modelInfoSchema } from "@roo-code/types"
+import type { ProviderName } from "@galaxia/types"
+import { modelInfoSchema } from "@galaxia/types"
 
 import { safeWriteJson } from "../../../utils/safeWriteJson"
 
@@ -99,8 +99,8 @@ async function fetchModelsFromProvider(options: GetModelsOptions): Promise<Model
 			models = await getHuggingFaceModels()
 			break
 		case "roo": {
-			// Roo Code Cloud provider requires baseUrl and optional apiKey
-			const rooBaseUrl = options.baseUrl ?? process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy"
+			// Galaxia Cloud provider requires baseUrl and optional apiKey
+			const rooBaseUrl = options.baseUrl ?? process.env.GALAXIA_PROVIDER_URL ?? "/proxy"
 			models = await getRooModels(rooBaseUrl, options.apiKey)
 			break
 		}

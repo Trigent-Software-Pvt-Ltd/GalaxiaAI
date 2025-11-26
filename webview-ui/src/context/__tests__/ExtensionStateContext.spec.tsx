@@ -1,6 +1,6 @@
 import { render, screen, act } from "@/utils/test-utils"
 
-import { ProviderSettings, ExperimentId, DEFAULT_CHECKPOINT_TIMEOUT_SECONDS } from "@roo-code/types"
+import { ProviderSettings, ExperimentId, DEFAULT_CHECKPOINT_TIMEOUT_SECONDS } from "@galaxia/types"
 
 import { ExtensionState } from "@roo/ExtensionMessage"
 

@@ -1,5 +1,5 @@
-{
-	"greeting": "Willkommen bei Roo Code",
+﻿{
+	"greeting": "Willkommen bei Galaxia",
 	"task": {
 		"title": "Aufgabe",
 		"expand": "Aufgabe erweitern",
@@ -21,11 +21,11 @@
 		"sharePublicly": "Öffentlich teilen",
 		"sharePubliclyDescription": "Jeder mit dem Link kann zugreifen",
 		"connectToCloud": "Mit Cloud verbinden",
-		"connectToCloudDescription": "Melde dich bei Roo Code Cloud an, um Aufgaben zu teilen",
+		"connectToCloudDescription": "Melde dich bei Galaxia Cloud an, um Aufgaben zu teilen",
 		"sharingDisabledByOrganization": "Freigabe von der Organisation deaktiviert",
 		"shareSuccessOrganization": "Organisationslink in die Zwischenablage kopiert",
 		"shareSuccessPublic": "Öffentlicher Link in die Zwischenablage kopiert",
-		"openInCloud": "Aufgabe in Roo Code Cloud öffnen",
+		"openInCloud": "Aufgabe in Galaxia Cloud öffnen",
 		"openInCloudIntro": "Überwache oder interagiere mit Roo von überall aus. Scanne, klicke oder kopiere zum Öffnen."
 	},
 	"unpin": "Lösen von oben",
@@ -85,7 +85,7 @@
 		"tooltip": "Aktuelle Operation abbrechen"
 	},
 	"scrollToBottom": "Zum Chat-Ende scrollen",
-	"about": "Roo Code ist ein ganzes KI-Entwicklerteam in deinem Editor.",
+	"about": "Galaxia ist ein ganzes KI-Entwicklerteam in deinem Editor.",
 	"docs": "Schau in unsere <DocsLink>Dokumentation</DocsLink>, um mehr zu erfahren.",
 	"onboarding": "Deine Aufgabenliste in diesem Arbeitsbereich ist leer.",
 	"rooTips": {
@@ -282,18 +282,18 @@
 		"countdownDisplay": "{{count}}s"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} veröffentlicht",
+		"title": "🎉 Galaxia {{version}} veröffentlicht",
 		"stealthModel": {
-			"feature": "<bold>Zeitlich begrenztes KOSTENLOSES Stealth-Modell</bold> - Code Supernova: Jetzt mit einem <bold>1M Token Kontextfenster</bold> erweitert! Ein vielseitiges agentisches Coding-Modell, das Bildeingaben unterstützt und über Roo Code Cloud zugänglich ist.",
+			"feature": "<bold>Zeitlich begrenztes KOSTENLOSES Stealth-Modell</bold> - Code Supernova: Jetzt mit einem <bold>1M Token Kontextfenster</bold> erweitert! Ein vielseitiges agentisches Coding-Modell, das Bildeingaben unterstützt und über Galaxia Cloud zugänglich ist.",
 			"note": "(Hinweis: Prompts und Vervollständigungen werden vom Modellersteller protokolliert und zur Verbesserung des Modells verwendet)",
-			"connectButton": "Mit Roo Code Cloud verbinden",
-			"selectModel": "Wähle <code>roo/code-supernova</code> vom Roo Code Cloud-Provider in den Einstellungen aus, um zu beginnen.",
+			"connectButton": "Mit Galaxia Cloud verbinden",
+			"selectModel": "Wähle <code>roo/code-supernova</code> vom Galaxia Cloud-Provider in den Einstellungen aus, um zu beginnen.",
 			"goToSettingsButton": "Zu den Einstellungen"
 		},
 		"release": {
 			"heading": "Neu in dieser Version:",
 			"browserUse": "Browser Use 2.0 verbessert das In-Chat-Browsing-Erlebnis mit persistenten Sitzungen, klareren Rückmeldungen, einem dedizierten Browser-Panel und natürlicheren Aktionsbeschreibungen",
-			"cloudPaid": "Der Roo Code Cloud-Provider bietet jetzt bezahlte Modelle: Kaufe Credits und nutze sie sowohl für Cloud-Agenten als auch für Inferenz"
+			"cloudPaid": "Der Galaxia Cloud-Provider bietet jetzt bezahlte Modelle: Kaufe Credits und nutze sie sowohl für Cloud-Agenten als auch für Inferenz"
 		},
 		"cloudAgents": {
 			"heading": "Neu in der Cloud:",
@@ -302,7 +302,7 @@
 			"tryButton": "Probiere Cloud-Agenten aus"
 		},
 		"careers": "Außerdem, <careersLink>wir stellen ein!</careersLink>",
-		"socialLinks": "Folge uns auf <xLink>X</xLink>, <discordLink>Discord</discordLink> oder <redditLink>r/RooCode</redditLink> 🚀"
+		"socialLinks": "Folge uns auf <xLink>X</xLink>, <discordLink>Discord</discordLink> oder <redditLink>r/Galaxia</redditLink> 🚀"
 	},
 	"browser": {
 		"session": "Browser-Sitzung",
@@ -340,7 +340,7 @@
 	"profileViolationWarning": "Das aktuelle Profil ist nicht kompatibel mit den Einstellungen deiner Organisation",
 	"shellIntegration": {
 		"title": "Befehlsausführungswarnung",
-		"description": "Dein Befehl wird ohne VSCode Terminal-Shell-Integration ausgeführt. Um diese Warnung zu unterdrücken, kannst du die Shell-Integration im Abschnitt <strong>Terminal</strong> der <settingsLink>Roo Code Einstellungen</settingsLink> deaktivieren oder die VSCode Terminal-Integration mit dem Link unten beheben.",
+		"description": "Dein Befehl wird ohne VSCode Terminal-Shell-Integration ausgeführt. Um diese Warnung zu unterdrücken, kannst du die Shell-Integration im Abschnitt <strong>Terminal</strong> der <settingsLink>Galaxia Einstellungen</settingsLink> deaktivieren oder die VSCode Terminal-Integration mit dem Link unten beheben.",
 		"troubleshooting": "Klicke hier für die Shell-Integrationsdokumentation."
 	},
 	"ask": {
@@ -381,7 +381,7 @@
 		"ariaLabel": "Version {{version}} - Klicken Sie, um die Versionshinweise anzuzeigen"
 	},
 	"rooCloudCTA": {
-		"title": "Roo Code Cloud entwickelt sich weiter!",
+		"title": "Galaxia Cloud entwickelt sich weiter!",
 		"description": "Führe Remote-Agenten in der Cloud aus, greife von überall auf deine Aufgaben zu, arbeite mit anderen zusammen und vieles mehr.",
 		"joinWaitlist": "Melde dich an, um die neuesten Updates zu erhalten."
 	},

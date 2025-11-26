@@ -1,4 +1,4 @@
-// npx vitest run src/api/providers/__tests__/openrouter.spec.ts
+﻿// npx vitest run src/api/providers/__tests__/openrouter.spec.ts
 
 // Mock vscode first to avoid import errors
 vitest.mock("vscode", () => ({}))
@@ -72,9 +72,9 @@ describe("OpenRouterHandler", () => {
 			baseURL: "https://openrouter.ai/api/v1",
 			apiKey: mockOptions.openRouterApiKey,
 			defaultHeaders: {
-				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-				"X-Title": "Roo Code",
-				"User-Agent": `RooCode/${Package.version}`,
+				"HTTP-Referer": "https://github.com/RooVetGit/galaxia",
+				"X-Title": "Galaxia",
+				"User-Agent": `Galaxia/${Package.version}`,
 			},
 		})
 	})

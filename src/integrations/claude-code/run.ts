@@ -1,9 +1,9 @@
-import * as vscode from "vscode"
+﻿import * as vscode from "vscode"
 import type Anthropic from "@anthropic-ai/sdk"
 import { execa } from "execa"
 import { ClaudeCodeMessage } from "./types"
 import readline from "readline"
-import { CLAUDE_CODE_DEFAULT_MAX_OUTPUT_TOKENS } from "@roo-code/types"
+import { CLAUDE_CODE_DEFAULT_MAX_OUTPUT_TOKENS } from "@galaxia/types"
 import * as os from "os"
 import { t } from "../../i18n"
 
@@ -170,7 +170,7 @@ function runProcess({
 		"stream-json",
 		"--disallowedTools",
 		claudeCodeTools,
-		// Roo Code will handle recursive calls
+		// Galaxia will handle recursive calls
 		"--max-turns",
 		"1",
 	)

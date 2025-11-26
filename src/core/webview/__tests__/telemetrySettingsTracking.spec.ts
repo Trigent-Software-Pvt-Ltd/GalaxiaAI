@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest"
-import { TelemetryService } from "@roo-code/telemetry"
-import { TelemetryEventName, type TelemetrySetting } from "@roo-code/types"
+import { TelemetryService } from "@galaxia/telemetry"
+import { TelemetryEventName, type TelemetrySetting } from "@galaxia/types"
 
 describe("Telemetry Settings Tracking", () => {
 	let mockTelemetryService: {

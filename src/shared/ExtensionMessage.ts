@@ -14,7 +14,7 @@ import type {
 	OrganizationAllowList,
 	ShareVisibility,
 	QueuedMessage,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { GitCommit } from "../utils/git"
 

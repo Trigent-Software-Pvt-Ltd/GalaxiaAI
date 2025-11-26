@@ -1,6 +1,6 @@
 import { render, screen } from "@/utils/test-utils"
 
-import type { HistoryItem } from "@roo-code/types"
+import type { HistoryItem } from "@galaxia/types"
 
 import HistoryPreview from "../HistoryPreview"
 

@@ -1,7 +1,7 @@
 import { DiffStrategy } from "../../../shared/tools"
 import { McpHub } from "../../../services/mcp/McpHub"
 import { CodeIndexManager } from "../../../services/code-index/manager"
-import type { ModeConfig, ToolName } from "@roo-code/types"
+import type { ModeConfig, ToolName } from "@galaxia/types"
 import { getAvailableToolsInGroup } from "../tools/filter-tools-for-mode"
 import type { SystemPromptSettings } from "../types"
 

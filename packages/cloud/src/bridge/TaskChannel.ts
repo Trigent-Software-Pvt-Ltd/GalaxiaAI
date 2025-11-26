@@ -1,4 +1,4 @@
-import type { Socket } from "socket.io-client"
+﻿import type { Socket } from "socket.io-client"
 
 import {
 	type ClineMessage,
@@ -8,11 +8,11 @@ import {
 	type TaskBridgeEvent,
 	type JoinResponse,
 	type LeaveResponse,
-	RooCodeEventName,
+	GalaxiaEventName,
 	TaskBridgeEventName,
 	TaskBridgeCommandName,
 	TaskSocketEvents,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { type BaseChannelOptions, BaseChannel } from "./BaseChannel.js"
 
@@ -44,7 +44,7 @@ export class TaskChannel extends BaseChannel<
 
 	private readonly eventMapping: readonly TaskEventMapping[] = [
 		{
-			from: RooCodeEventName.Message,
+			from: GalaxiaEventName.Message,
 			to: TaskBridgeEventName.Message,
 			createPayload: (task: TaskLike, data: { action: string; message: ClineMessage }) => ({
 				type: TaskBridgeEventName.Message,
@@ -54,7 +54,7 @@ export class TaskChannel extends BaseChannel<
 			}),
 		},
 		{
-			from: RooCodeEventName.TaskModeSwitched,
+			from: GalaxiaEventName.TaskModeSwitched,
 			to: TaskBridgeEventName.TaskModeSwitched,
 			createPayload: (task: TaskLike, mode: string) => ({
 				type: TaskBridgeEventName.TaskModeSwitched,
@@ -63,7 +63,7 @@ export class TaskChannel extends BaseChannel<
 			}),
 		},
 		{
-			from: RooCodeEventName.TaskInteractive,
+			from: GalaxiaEventName.TaskInteractive,
 			to: TaskBridgeEventName.TaskInteractive,
 			createPayload: (task: TaskLike, _taskId: string) => ({
 				type: TaskBridgeEventName.TaskInteractive,

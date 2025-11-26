@@ -1,8 +1,8 @@
 import path from "path"
 import fs from "fs/promises"
 
-import { TelemetryService } from "@roo-code/telemetry"
-import { DEFAULT_WRITE_DELAY_MS } from "@roo-code/types"
+import { TelemetryService } from "@galaxia/telemetry"
+import { DEFAULT_WRITE_DELAY_MS } from "@galaxia/types"
 
 import { ClineSayTool } from "../../shared/ExtensionMessage"
 import { getReadablePath } from "../../utils/path"
@@ -16,7 +16,7 @@ import { parseXmlForDiff } from "../../utils/xml"
 import { EXPERIMENT_IDS, experiments } from "../../shared/experiments"
 import { applyDiffTool as applyDiffToolClass } from "./ApplyDiffTool"
 import { computeDiffStats, sanitizeUnifiedDiff } from "../diff/stats"
-import { isNativeProtocol } from "@roo-code/types"
+import { isNativeProtocol } from "@galaxia/types"
 import { resolveToolProtocol } from "../../utils/resolveToolProtocol"
 
 interface DiffOperation {

@@ -1,4 +1,4 @@
-import { Client } from "@modelcontextprotocol/sdk/client/index.js"
+﻿import { Client } from "@modelcontextprotocol/sdk/client/index.js"
 import { StdioClientTransport, getDefaultEnvironment } from "@modelcontextprotocol/sdk/client/stdio.js"
 import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js"
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js"
@@ -650,7 +650,7 @@ export class McpHub {
 		try {
 			const client = new Client(
 				{
-					name: "Roo Code",
+					name: "Galaxia",
 					version: this.providerRef.deref()?.context.extension?.packageJSON?.version ?? "1.0.0",
 				},
 				{

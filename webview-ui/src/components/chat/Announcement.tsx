@@ -1,4 +1,4 @@
-import { useState, memo } from "react"
+﻿import { useState, memo } from "react"
 import { Trans } from "react-i18next"
 import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 
@@ -76,10 +76,10 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 
 const XLink = () => (
 	<VSCodeLink
-		href="https://x.com/roocode"
+		href="https://x.com/Galaxia"
 		onClick={(e) => {
 			e.preventDefault()
-			vscode.postMessage({ type: "openExternal", url: "https://x.com/roocode" })
+			vscode.postMessage({ type: "openExternal", url: "https://x.com/Galaxia" })
 		}}>
 		X
 	</VSCodeLink>
@@ -98,21 +98,21 @@ const DiscordLink = () => (
 
 const RedditLink = () => (
 	<VSCodeLink
-		href="https://www.reddit.com/r/RooCode/"
+		href="https://www.reddit.com/r/Galaxia/"
 		onClick={(e) => {
 			e.preventDefault()
-			vscode.postMessage({ type: "openExternal", url: "https://www.reddit.com/r/RooCode/" })
+			vscode.postMessage({ type: "openExternal", url: "https://www.reddit.com/r/Galaxia/" })
 		}}>
-		r/RooCode
+		r/Galaxia
 	</VSCodeLink>
 )
 
 const CareersLink = ({ children }: { children?: React.ReactNode }) => (
 	<VSCodeLink
-		href="https://careers.roocode.com"
+		href=""
 		onClick={(e) => {
 			e.preventDefault()
-			vscode.postMessage({ type: "openExternal", url: "https://careers.roocode.com" })
+			vscode.postMessage({ type: "openExternal", url: "" })
 		}}>
 		{children}
 	</VSCodeLink>

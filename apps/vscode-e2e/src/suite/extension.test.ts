@@ -1,9 +1,9 @@
-import * as assert from "assert"
+﻿import * as assert from "assert"
 import * as vscode from "vscode"
 
 import { setDefaultSuiteTimeout } from "./test-utils"
 
-suite("Roo Code Extension", function () {
+suite("Galaxia Extension", function () {
 	setDefaultSuiteTimeout(this)
 
 	test("Commands should be registered", async () => {
@@ -38,10 +38,10 @@ suite("Roo Code Extension", function () {
 			"terminalExplainCommand",
 		]
 
-		const commands = new Set((await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("roo-cline")))
+		const commands = new Set((await vscode.commands.getCommands(true)).filter((cmd) => cmd.startsWith("galaxia")))
 
 		for (const command of expectedCommands) {
-			assert.ok(commands.has(`roo-cline.${command}`), `Command ${command} should be registered`)
+			assert.ok(commands.has(`galaxia.${command}`), `Command ${command} should be registered`)
 		}
 	})
 })

@@ -1,7 +1,7 @@
-// npx vitest run api/providers/__tests__/roo.spec.ts
+﻿// npx vitest run api/providers/__tests__/roo.spec.ts
 
 import { Anthropic } from "@anthropic-ai/sdk"
-import { rooDefaultModelId } from "@roo-code/types"
+import { rooDefaultModelId } from "@galaxia/types"
 
 import { ApiHandlerOptions } from "../../../shared/api"
 
@@ -61,7 +61,7 @@ const mockGetSessionTokenFn = vitest.fn()
 const mockHasInstanceFn = vitest.fn()
 const mockOnFn = vitest.fn()
 
-vitest.mock("@roo-code/cloud", () => ({
+vitest.mock("@galaxia/cloud", () => ({
 	CloudService: {
 		hasInstance: () => mockHasInstanceFn(),
 		get instance() {
@@ -80,7 +80,7 @@ vitest.mock("@roo-code/cloud", () => ({
 vitest.mock("../../../i18n", () => ({
 	t: vitest.fn((key: string) => {
 		if (key === "common:errors.roo.authenticationRequired") {
-			return "Authentication required for Roo Code Cloud"
+			return "Authentication required for Galaxia Cloud"
 		}
 		return key
 	}),
@@ -128,7 +128,7 @@ vitest.mock("../../providers/fetchers/modelCache", () => ({
 
 // Import after mocks are set up
 import { RooHandler } from "../roo"
-import { CloudService } from "@roo-code/cloud"
+import { CloudService } from "@galaxia/cloud"
 
 describe("RooHandler", () => {
 	let handler: RooHandler
@@ -345,7 +345,7 @@ describe("RooHandler", () => {
 		it("should handle API errors", async () => {
 			mockCreate.mockRejectedValueOnce(new Error("API Error"))
 			await expect(handler.completePrompt("Test prompt")).rejects.toThrow(
-				"Roo Code Cloud completion error: API Error",
+				"Galaxia Cloud completion error: API Error",
 			)
 		})
 

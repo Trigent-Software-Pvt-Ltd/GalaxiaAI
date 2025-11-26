@@ -1,11 +1,11 @@
-import { useCallback, useState, useEffect } from "react"
+﻿import { useCallback, useState, useEffect } from "react"
 import knuthShuffle from "knuth-shuffle-seeded"
 import { Trans } from "react-i18next"
 import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import posthog from "posthog-js"
 
-import type { ProviderSettings } from "@roo-code/types"
-import { TelemetryEventName } from "@roo-code/types"
+import type { ProviderSettings } from "@galaxia/types"
+import { TelemetryEventName } from "@galaxia/types"
 
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { validateApiConfiguration } from "@src/utils/validate"
@@ -103,7 +103,7 @@ const WelcomeView = () => {
 										...baseProviders,
 										{
 											slug: "roo",
-											name: "Roo Code Cloud",
+											name: "Galaxia Cloud",
 											description: t("welcome:routers.roo.description"),
 											incentive: t("welcome:routers.roo.incentive"),
 											authUrl: "#", // Placeholder since onClick handler will prevent default

@@ -1,6 +1,6 @@
-import { ToolProtocol, TOOL_PROTOCOL } from "@roo-code/types"
+import { ToolProtocol, TOOL_PROTOCOL } from "@galaxia/types"
 import { CodeIndexManager } from "../../../services/code-index/manager"
-import { isNativeProtocol } from "@roo-code/types"
+import { isNativeProtocol } from "@galaxia/types"
 
 export function getToolUseGuidelinesSection(
 	codeIndexManager?: CodeIndexManager,

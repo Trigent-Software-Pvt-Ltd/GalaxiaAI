@@ -1,4 +1,4 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 import { modelInfoSchema, reasoningEffortSettingSchema, verbosityLevelsSchema, serviceTierSchema } from "./model.js"
 import { codebaseIndexProviderSchema } from "./codebase-index.js"
@@ -87,7 +87,7 @@ export const isInternalProvider = (key: string): key is InternalProvider =>
 /**
  * CustomProvider
  *
- * Custom providers are completely configurable within Roo Code settings.
+ * Custom providers are completely configurable within Galaxia settings.
  */
 
 export const customProviders = ["openai"] as const
@@ -706,7 +706,7 @@ export const MODELS_BY_PROVIDER: Record<
 		models: Object.keys(openAiNativeModels),
 	},
 	"qwen-code": { id: "qwen-code", label: "Qwen Code", models: Object.keys(qwenCodeModels) },
-	roo: { id: "roo", label: "Roo Code Cloud", models: [] },
+	roo: { id: "roo", label: "Galaxia Cloud", models: [] },
 	sambanova: {
 		id: "sambanova",
 		label: "SambaNova",

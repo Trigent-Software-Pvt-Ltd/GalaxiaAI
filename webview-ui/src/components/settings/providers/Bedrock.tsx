@@ -8,7 +8,7 @@ import {
 	BEDROCK_REGIONS,
 	BEDROCK_1M_CONTEXT_MODEL_IDS,
 	BEDROCK_GLOBAL_INFERENCE_MODEL_IDS,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, StandardTooltip } from "@src/components/ui"

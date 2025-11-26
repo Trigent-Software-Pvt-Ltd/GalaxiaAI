@@ -1,4 +1,4 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 import { providerNames } from "./provider-settings.js"
 import { clineMessageSchema } from "./message.js"
@@ -156,10 +156,10 @@ export type TelemetryEvent = {
 }
 
 /**
- * RooCodeTelemetryEvent
+ * GalaxiaTelemetryEvent
  */
 
-export const rooCodeTelemetryEventSchema = z.discriminatedUnion("type", [
+export const GalaxiaTelemetryEventSchema = z.discriminatedUnion("type", [
 	z.object({
 		type: z.enum([
 			TelemetryEventName.TASK_CREATED,
@@ -233,7 +233,7 @@ export const rooCodeTelemetryEventSchema = z.discriminatedUnion("type", [
 	}),
 ])
 
-export type RooCodeTelemetryEvent = z.infer<typeof rooCodeTelemetryEventSchema>
+export type GalaxiaTelemetryEvent = z.infer<typeof GalaxiaTelemetryEventSchema>
 
 /**
  * TelemetryEventSubscription

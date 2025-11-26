@@ -1,5 +1,5 @@
 import type OpenAI from "openai"
-import type { ModeConfig, ToolName, ToolGroup } from "@roo-code/types"
+import type { ModeConfig, ToolName, ToolGroup } from "@galaxia/types"
 import { getModeBySlug, getToolsForMode, isToolAllowedForMode } from "../../../shared/modes"
 import { TOOL_GROUPS, ALWAYS_AVAILABLE_TOOLS } from "../../../shared/tools"
 import { defaultModeSlug } from "../../../shared/modes"

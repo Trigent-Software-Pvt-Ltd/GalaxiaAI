@@ -1,12 +1,12 @@
-import { type Keys, type RooCodeSettings, GLOBAL_SETTINGS_KEYS, PROVIDER_SETTINGS_KEYS } from "@roo-code/types"
+﻿import { type Keys, type GalaxiaSettings, GLOBAL_SETTINGS_KEYS, PROVIDER_SETTINGS_KEYS } from "@galaxia/types"
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui"
 
-export const ROO_CODE_SETTINGS_KEYS = [...GLOBAL_SETTINGS_KEYS, ...PROVIDER_SETTINGS_KEYS] as Keys<RooCodeSettings>[]
+export const ROO_CODE_SETTINGS_KEYS = [...GLOBAL_SETTINGS_KEYS, ...PROVIDER_SETTINGS_KEYS] as Keys<GalaxiaSettings>[]
 
 type SettingsDiffProps = {
-	defaultSettings: RooCodeSettings
-	customSettings: RooCodeSettings
+	defaultSettings: GalaxiaSettings
+	customSettings: GalaxiaSettings
 }
 
 export function SettingsDiff({

@@ -6,7 +6,7 @@ import {
 	type ModelInfo,
 	ZAI_DEFAULT_TEMPERATURE,
 	zaiApiLineConfigs,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import type { ApiHandlerOptions } from "../../shared/api"
 

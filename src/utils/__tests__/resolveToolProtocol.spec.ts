@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest"
 import { resolveToolProtocol } from "../resolveToolProtocol"
-import { TOOL_PROTOCOL } from "@roo-code/types"
-import type { ProviderSettings, ModelInfo } from "@roo-code/types"
+import { TOOL_PROTOCOL } from "@galaxia/types"
+import type { ProviderSettings, ModelInfo } from "@galaxia/types"
 
 describe("resolveToolProtocol", () => {
 	describe("Precedence Level 1: User Profile Setting", () => {

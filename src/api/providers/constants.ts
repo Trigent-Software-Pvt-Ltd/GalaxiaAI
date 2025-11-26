@@ -1,7 +1,7 @@
-import { Package } from "../../shared/package"
+﻿import { Package } from "../../shared/package"
 
 export const DEFAULT_HEADERS = {
-	"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-	"X-Title": "Roo Code",
-	"User-Agent": `RooCode/${Package.version}`,
+	"HTTP-Referer": "https://github.com/Trigent-Software-Pvt-Ltd/GalaxiaAI",
+	"X-Title": "Galaxia",
+	"User-Agent": `Galaxia/${Package.version}`,
 }

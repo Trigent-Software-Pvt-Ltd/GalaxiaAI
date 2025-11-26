@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { SimpleThinkingBudget } from "../SimpleThinkingBudget"
-import type { ProviderSettings, ModelInfo } from "@roo-code/types"
+import type { ProviderSettings, ModelInfo } from "@galaxia/types"
 
 // Mock the translation hook
 vi.mock("@src/i18n/TranslationContext", () => ({

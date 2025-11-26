@@ -1,4 +1,4 @@
-import { Users, Building2, ArrowRight, Star, LucideIcon, Check, Cloud, PlugZap } from "lucide-react"
+﻿import { Users, Building2, ArrowRight, Star, LucideIcon, Check, Cloud, PlugZap } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
@@ -9,9 +9,9 @@ import { SEO } from "@/lib/seo"
 import { ogImageUrl } from "@/lib/og"
 import { EXTERNAL_LINKS } from "@/lib/constants"
 
-const TITLE = "Roo Code Cloud Pricing"
+const TITLE = "Galaxia Cloud Pricing"
 const DESCRIPTION =
-	"Simple, transparent pricing for Roo Code Cloud. The VS Code extension is free forever. Choose the cloud plan that fits your needs."
+	"Simple, transparent pricing for Galaxia Cloud. The VS Code extension is free forever. Choose the cloud plan that fits your needs."
 const OG_DESCRIPTION = ""
 const PATH = "/pricing"
 
@@ -82,7 +82,7 @@ const pricingTiers: PricingTier[] = [
 		description: "For folks just getting started",
 		features: [
 			"Token usage analytics",
-			"Access to the Roo Code Cloud Provider, including early access to free stealth models",
+			"Access to the Galaxia Cloud Provider, including early access to free stealth models",
 			"Follow your tasks from anywhere",
 			"Share tasks with friends and co-workers",
 			"Community support",
@@ -99,7 +99,7 @@ const pricingTiers: PricingTier[] = [
 		period: "/mo",
 		trial: "Free for 14 days, then",
 		creditPrice: `$${PRICE_CREDITS}`,
-		description: "For pro Roo coders",
+		description: "For pro Galaxiars",
 		featuresIntro: "Everything in Free +",
 		features: [
 			"Cloud Agents: Coder, Explainer, Planner, Reviewer, Fixer and more",
@@ -138,7 +138,7 @@ export default function PricingPage() {
 			<section className="relative overflow-hidden pt-16 pb-12">
 				<div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center">
-						<h1 className="text-5xl font-bold tracking-tight">Roo Code Cloud Pricing</h1>
+						<h1 className="text-5xl font-bold tracking-tight">Galaxia Cloud Pricing</h1>
 						<p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
 							Simple, transparent pricing that scales with your needs.
 							<br />
@@ -151,7 +151,7 @@ export default function PricingPage() {
 			<div className="mx-6 md:mx-auto max-w-6xl">
 				<div className="rounded-xl p-4 mb-8 text-center bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-purple-500/10 border border-blue-500/20 dark:border-white/20 ">
 					<p className="text-center">
-						<strong className="font-semibold">The Roo Code extension is totally free! </strong>
+						<strong className="font-semibold">The Galaxia extension is totally free! </strong>
 						But Cloud takes you so much further.
 					</p>
 				</div>
@@ -159,12 +159,12 @@ export default function PricingPage() {
 
 			<div className="mx-6 md:mx-auto max-w-6xl p-7 mb-4 relative flex flex-col justify-start bg-background border rounded-2xl transition-all shadow-none hover:shadow-lg">
 				<h3 className="text-xl font-semibold flex items-center gap-2 justify-between">
-					Roo Code Provider
+					Galaxia Provider
 					<PlugZap className="size-6" />
 				</h3>
 				<div className="text-sm text-muted-foreground space-y-1 mt-2">
 					<p className="">
-						On any plan, you can bring your own provider key or use the built-in Roo Code Cloud provider.
+						On any plan, you can bring your own provider key or use the built-in Galaxia Cloud provider.
 					</p>
 					<p className="text-sm text-muted-foreground">
 						We offer a select mix of tested state of the art closed and open weight LLMs for you to choose,
@@ -273,9 +273,9 @@ export default function PricingPage() {
 					</div>
 					<div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
 						<div className="rounded-xl border border-border bg-card p-6">
-							<h3 className="font-semibold">Wait, is Roo Code free or not?</h3>
+							<h3 className="font-semibold">Wait, is Galaxia free or not?</h3>
 							<p className="mt-2 text-sm text-muted-foreground">
-								Yes! The Roo Code VS Code extension is open source and free forever. The extension acts
+								Yes! The Galaxia VS Code extension is open source and free forever. The extension acts
 								as a powerful AI coding assistant right in your editor. These are the prices for Roo
 								Code Cloud.
 							</p>
@@ -292,14 +292,14 @@ export default function PricingPage() {
 						<div className="rounded-xl border border-border bg-card p-6">
 							<h3 className="font-semibold">How do credits work?</h3>
 							<p className="mt-2 text-sm text-muted-foreground">
-								Roo Code Cloud credits can be used in two ways:
+								Galaxia Cloud credits can be used in two ways:
 							</p>
 							<ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
 								<li>To pay for Cloud Agents running time (${PRICE_CREDITS}/hour)</li>
 								<li>
 									To pay for AI model inference costs (
 									<a
-										href="https://app.roocode.com/provider/pricing"
+										href="/provider/pricing"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="underline">
@@ -364,7 +364,7 @@ export default function PricingPage() {
 			<section className="py-20">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mx-auto max-w-4xl rounded-3xl border border-border/50 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-purple-500/5 p-8 text-center shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-gradient-to-br dark:from-gray-800 dark:via-gray-900 dark:to-black sm:p-12">
-						<h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Try Roo Code Cloud now</h2>
+						<h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">Try Galaxia Cloud now</h2>
 						<p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground">Code from anywhere.</p>
 						<div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
 							<Button

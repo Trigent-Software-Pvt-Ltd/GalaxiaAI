@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react"
+﻿import { useCallback, useState } from "react"
 import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 
-import type { ProviderSettings } from "@roo-code/types"
+import type { ProviderSettings } from "@galaxia/types"
 
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { validateApiConfiguration } from "@src/utils/validate"
@@ -77,7 +77,7 @@ const WelcomeViewProvider = () => {
 				</div>
 
 				<div className="mb-4">
-					{/* Roo Code Cloud Provider Option */}
+					{/* Galaxia Cloud Provider Option */}
 					<div
 						className="flex items-start gap-3 p-4 mb-3 border border-vscode-panel-border rounded-md cursor-pointer hover:bg-vscode-list-hoverBackground"
 						onClick={() => setSelectedProvider("roo")}>
@@ -95,7 +95,7 @@ const WelcomeViewProvider = () => {
 							<p className="text-xs text-vscode-descriptionForeground mb-1">
 								{t("welcome:providerSignup.rooCloudDescription")} (
 								<VSCodeLink
-									href="https://roocode.com/provider/pricing?utm_source=extension&utm_medium=welcome-screen&utm_campaign=provider-signup&utm_content=learn-more"
+									href="https://trigent.com//provider/pricing?utm_source=extension&utm_medium=welcome-screen&utm_campaign=provider-signup&utm_content=learn-more"
 									className="text-xs">
 									{t("welcome:providerSignup.learnMore")}
 								</VSCodeLink>

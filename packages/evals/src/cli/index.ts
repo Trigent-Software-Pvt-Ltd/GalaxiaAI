@@ -1,4 +1,4 @@
-import * as fs from "fs"
+﻿import * as fs from "fs"
 
 import { run, command, option, flag, number, boolean } from "cmd-ts"
 
@@ -46,7 +46,7 @@ const main = async () => {
 
 if (!fs.existsSync(EVALS_REPO_PATH)) {
 	console.error(
-		`Exercises do not exist at ${EVALS_REPO_PATH}. Please run "git clone https://github.com/RooCodeInc/Roo-Code-Evals.git evals".`,
+		`Exercises do not exist at ${EVALS_REPO_PATH}. Please run "git clone https://github.com/TrigentSoftwareInc/Roo-Code-Evals.git evals".`,
 	)
 
 	process.exit(1)

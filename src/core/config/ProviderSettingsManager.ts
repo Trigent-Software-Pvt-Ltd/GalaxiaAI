@@ -11,8 +11,8 @@ import {
 	DEFAULT_CONSECUTIVE_MISTAKE_LIMIT,
 	getModelId,
 	type ProviderName,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
 
 import { Mode, modes } from "../../shared/modes"
 import { buildApiHandler } from "../../api"

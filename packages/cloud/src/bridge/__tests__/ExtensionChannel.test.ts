@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { Socket } from "socket.io-client"
 
@@ -6,10 +6,10 @@ import {
 	type TaskProviderLike,
 	type TaskProviderEvents,
 	type StaticAppProperties,
-	RooCodeEventName,
+	GalaxiaEventName,
 	ExtensionBridgeEventName,
 	ExtensionSocketEvents,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { ExtensionChannel } from "../ExtensionChannel.js"
 
@@ -25,7 +25,7 @@ describe("ExtensionChannel", () => {
 		appVersion: "1.0.0",
 		vscodeVersion: "1.0.0",
 		platform: "darwin",
-		editorName: "Roo Code",
+		editorName: "Galaxia",
 		hostname: "test-host",
 	}
 
@@ -106,22 +106,22 @@ describe("ExtensionChannel", () => {
 	describe("Event Listener Management", () => {
 		it("should register event listeners on initialization", () => {
 			// Verify that listeners were registered for all expected events
-			const expectedEvents: RooCodeEventName[] = [
-				RooCodeEventName.TaskCreated,
-				RooCodeEventName.TaskStarted,
-				RooCodeEventName.TaskCompleted,
-				RooCodeEventName.TaskAborted,
-				RooCodeEventName.TaskFocused,
-				RooCodeEventName.TaskUnfocused,
-				RooCodeEventName.TaskActive,
-				RooCodeEventName.TaskInteractive,
-				RooCodeEventName.TaskResumable,
-				RooCodeEventName.TaskIdle,
-				RooCodeEventName.TaskPaused,
-				RooCodeEventName.TaskUnpaused,
-				RooCodeEventName.TaskSpawned,
-				RooCodeEventName.TaskUserMessage,
-				RooCodeEventName.TaskTokenUsageUpdated,
+			const expectedEvents: GalaxiaEventName[] = [
+				GalaxiaEventName.TaskCreated,
+				GalaxiaEventName.TaskStarted,
+				GalaxiaEventName.TaskCompleted,
+				GalaxiaEventName.TaskAborted,
+				GalaxiaEventName.TaskFocused,
+				GalaxiaEventName.TaskUnfocused,
+				GalaxiaEventName.TaskActive,
+				GalaxiaEventName.TaskInteractive,
+				GalaxiaEventName.TaskResumable,
+				GalaxiaEventName.TaskIdle,
+				GalaxiaEventName.TaskPaused,
+				GalaxiaEventName.TaskUnpaused,
+				GalaxiaEventName.TaskSpawned,
+				GalaxiaEventName.TaskUserMessage,
+				GalaxiaEventName.TaskTokenUsageUpdated,
 			]
 
 			// Check that on() was called for each event
@@ -222,7 +222,7 @@ describe("ExtensionChannel", () => {
 			;(mockSocket.emit as any).mockClear()
 
 			// Get a listener that was registered for TaskStarted
-			const taskStartedListeners = eventListeners.get(RooCodeEventName.TaskStarted)
+			const taskStartedListeners = eventListeners.get(GalaxiaEventName.TaskStarted)
 			expect(taskStartedListeners).toBeDefined()
 			expect(taskStartedListeners!.size).toBe(1)
 

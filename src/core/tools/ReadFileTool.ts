@@ -1,7 +1,7 @@
 import path from "path"
 import { isBinaryFile } from "isbinaryfile"
-import type { FileEntry, LineRange } from "@roo-code/types"
-import { isNativeProtocol } from "@roo-code/types"
+import type { FileEntry, LineRange } from "@galaxia/types"
+import { isNativeProtocol } from "@galaxia/types"
 
 import { Task } from "../task/Task"
 import { ClineSayTool } from "../../shared/ExtensionMessage"

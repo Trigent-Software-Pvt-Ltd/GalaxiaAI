@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const window = {
 	showInformationMessage: vi.fn(),
@@ -56,8 +56,8 @@ export const mockExtensionContext: ExtensionContext = {
 	extension: {
 		packageJSON: {
 			version: "1.0.0",
-			publisher: "RooVeterinaryInc",
-			name: "roo-cline",
+			publisher: "TrigentSoftwareInc",
+			name: "galaxia",
 		},
 	},
 }

@@ -1,4 +1,4 @@
-import os from "os"
+﻿import os from "os"
 import * as path from "path"
 import fs from "fs/promises"
 import EventEmitter from "events"
@@ -15,7 +15,7 @@ import {
 	type GlobalState,
 	type ProviderName,
 	type ProviderSettings,
-	type RooCodeSettings,
+	type GalaxiaSettings,
 	type ProviderSettingsEntry,
 	type StaticAppProperties,
 	type DynamicAppProperties,
@@ -33,7 +33,7 @@ import {
 	type CloudOrganizationMembership,
 	type CreateTaskOptions,
 	type TokenUsage,
-	RooCodeEventName,
+	GalaxiaEventName,
 	requestyDefaultModelId,
 	openRouterDefaultModelId,
 	glamaDefaultModelId,
@@ -43,9 +43,9 @@ import {
 	DEFAULT_MODES,
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
 	getModelId,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
-import { CloudService, BridgeOrchestrator, getRooCodeApiUrl } from "@roo-code/cloud"
+} from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
+import { CloudService, BridgeOrchestrator, getGalaxiaApiUrl } from "@galaxia/cloud"
 
 import { Package } from "../../shared/package"
 import { findLast } from "../../shared/array"
@@ -92,7 +92,7 @@ import { Task } from "../task/Task"
 import { getSystemPromptFilePath } from "../prompts/sections/custom-system-prompt"
 
 import { webviewMessageHandler } from "./webviewMessageHandler"
-import type { ClineMessage } from "@roo-code/types"
+import type { ClineMessage } from "@galaxia/types"
 import { readApiMessages, saveApiMessages, saveTaskMessages } from "../task-persistence"
 import { getNonce } from "./getNonce"
 import { getUri } from "./getUri"
@@ -200,14 +200,14 @@ export class ClineProvider
 		// Forward <most> task events to the provider.
 		// We do something fairly similar for the IPC-based API.
 		this.taskCreationCallback = (instance: Task) => {
-			this.emit(RooCodeEventName.TaskCreated, instance)
+			this.emit(GalaxiaEventName.TaskCreated, instance)
 
 			// Create named listener functions so we can remove them later.
-			const onTaskStarted = () => this.emit(RooCodeEventName.TaskStarted, instance.taskId)
+			const onTaskStarted = () => this.emit(GalaxiaEventName.TaskStarted, instance.taskId)
 			const onTaskCompleted = (taskId: string, tokenUsage: any, toolUsage: any) =>
-				this.emit(RooCodeEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
+				this.emit(GalaxiaEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
 			const onTaskAborted = async () => {
-				this.emit(RooCodeEventName.TaskAborted, instance.taskId)
+				this.emit(GalaxiaEventName.TaskAborted, instance.taskId)
 
 				try {
 					// Only rehydrate on genuine streaming failures.
@@ -235,55 +235,55 @@ export class ClineProvider
 					)
 				}
 			}
-			const onTaskFocused = () => this.emit(RooCodeEventName.TaskFocused, instance.taskId)
-			const onTaskUnfocused = () => this.emit(RooCodeEventName.TaskUnfocused, instance.taskId)
-			const onTaskActive = (taskId: string) => this.emit(RooCodeEventName.TaskActive, taskId)
-			const onTaskInteractive = (taskId: string) => this.emit(RooCodeEventName.TaskInteractive, taskId)
-			const onTaskResumable = (taskId: string) => this.emit(RooCodeEventName.TaskResumable, taskId)
-			const onTaskIdle = (taskId: string) => this.emit(RooCodeEventName.TaskIdle, taskId)
-			const onTaskPaused = (taskId: string) => this.emit(RooCodeEventName.TaskPaused, taskId)
-			const onTaskUnpaused = (taskId: string) => this.emit(RooCodeEventName.TaskUnpaused, taskId)
-			const onTaskSpawned = (taskId: string) => this.emit(RooCodeEventName.TaskSpawned, taskId)
-			const onTaskUserMessage = (taskId: string) => this.emit(RooCodeEventName.TaskUserMessage, taskId)
+			const onTaskFocused = () => this.emit(GalaxiaEventName.TaskFocused, instance.taskId)
+			const onTaskUnfocused = () => this.emit(GalaxiaEventName.TaskUnfocused, instance.taskId)
+			const onTaskActive = (taskId: string) => this.emit(GalaxiaEventName.TaskActive, taskId)
+			const onTaskInteractive = (taskId: string) => this.emit(GalaxiaEventName.TaskInteractive, taskId)
+			const onTaskResumable = (taskId: string) => this.emit(GalaxiaEventName.TaskResumable, taskId)
+			const onTaskIdle = (taskId: string) => this.emit(GalaxiaEventName.TaskIdle, taskId)
+			const onTaskPaused = (taskId: string) => this.emit(GalaxiaEventName.TaskPaused, taskId)
+			const onTaskUnpaused = (taskId: string) => this.emit(GalaxiaEventName.TaskUnpaused, taskId)
+			const onTaskSpawned = (taskId: string) => this.emit(GalaxiaEventName.TaskSpawned, taskId)
+			const onTaskUserMessage = (taskId: string) => this.emit(GalaxiaEventName.TaskUserMessage, taskId)
 			const onTaskTokenUsageUpdated = (taskId: string, tokenUsage: TokenUsage) =>
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, taskId, tokenUsage)
+				this.emit(GalaxiaEventName.TaskTokenUsageUpdated, taskId, tokenUsage)
 
 			// Attach the listeners.
-			instance.on(RooCodeEventName.TaskStarted, onTaskStarted)
-			instance.on(RooCodeEventName.TaskCompleted, onTaskCompleted)
-			instance.on(RooCodeEventName.TaskAborted, onTaskAborted)
-			instance.on(RooCodeEventName.TaskFocused, onTaskFocused)
-			instance.on(RooCodeEventName.TaskUnfocused, onTaskUnfocused)
-			instance.on(RooCodeEventName.TaskActive, onTaskActive)
-			instance.on(RooCodeEventName.TaskInteractive, onTaskInteractive)
-			instance.on(RooCodeEventName.TaskResumable, onTaskResumable)
-			instance.on(RooCodeEventName.TaskIdle, onTaskIdle)
-			instance.on(RooCodeEventName.TaskPaused, onTaskPaused)
-			instance.on(RooCodeEventName.TaskUnpaused, onTaskUnpaused)
-			instance.on(RooCodeEventName.TaskSpawned, onTaskSpawned)
-			instance.on(RooCodeEventName.TaskUserMessage, onTaskUserMessage)
-			instance.on(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
+			instance.on(GalaxiaEventName.TaskStarted, onTaskStarted)
+			instance.on(GalaxiaEventName.TaskCompleted, onTaskCompleted)
+			instance.on(GalaxiaEventName.TaskAborted, onTaskAborted)
+			instance.on(GalaxiaEventName.TaskFocused, onTaskFocused)
+			instance.on(GalaxiaEventName.TaskUnfocused, onTaskUnfocused)
+			instance.on(GalaxiaEventName.TaskActive, onTaskActive)
+			instance.on(GalaxiaEventName.TaskInteractive, onTaskInteractive)
+			instance.on(GalaxiaEventName.TaskResumable, onTaskResumable)
+			instance.on(GalaxiaEventName.TaskIdle, onTaskIdle)
+			instance.on(GalaxiaEventName.TaskPaused, onTaskPaused)
+			instance.on(GalaxiaEventName.TaskUnpaused, onTaskUnpaused)
+			instance.on(GalaxiaEventName.TaskSpawned, onTaskSpawned)
+			instance.on(GalaxiaEventName.TaskUserMessage, onTaskUserMessage)
+			instance.on(GalaxiaEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
 
 			// Store the cleanup functions for later removal.
 			this.taskEventListeners.set(instance, [
-				() => instance.off(RooCodeEventName.TaskStarted, onTaskStarted),
-				() => instance.off(RooCodeEventName.TaskCompleted, onTaskCompleted),
-				() => instance.off(RooCodeEventName.TaskAborted, onTaskAborted),
-				() => instance.off(RooCodeEventName.TaskFocused, onTaskFocused),
-				() => instance.off(RooCodeEventName.TaskUnfocused, onTaskUnfocused),
-				() => instance.off(RooCodeEventName.TaskActive, onTaskActive),
-				() => instance.off(RooCodeEventName.TaskInteractive, onTaskInteractive),
-				() => instance.off(RooCodeEventName.TaskResumable, onTaskResumable),
-				() => instance.off(RooCodeEventName.TaskIdle, onTaskIdle),
-				() => instance.off(RooCodeEventName.TaskUserMessage, onTaskUserMessage),
-				() => instance.off(RooCodeEventName.TaskPaused, onTaskPaused),
-				() => instance.off(RooCodeEventName.TaskUnpaused, onTaskUnpaused),
-				() => instance.off(RooCodeEventName.TaskSpawned, onTaskSpawned),
-				() => instance.off(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
+				() => instance.off(GalaxiaEventName.TaskStarted, onTaskStarted),
+				() => instance.off(GalaxiaEventName.TaskCompleted, onTaskCompleted),
+				() => instance.off(GalaxiaEventName.TaskAborted, onTaskAborted),
+				() => instance.off(GalaxiaEventName.TaskFocused, onTaskFocused),
+				() => instance.off(GalaxiaEventName.TaskUnfocused, onTaskUnfocused),
+				() => instance.off(GalaxiaEventName.TaskActive, onTaskActive),
+				() => instance.off(GalaxiaEventName.TaskInteractive, onTaskInteractive),
+				() => instance.off(GalaxiaEventName.TaskResumable, onTaskResumable),
+				() => instance.off(GalaxiaEventName.TaskIdle, onTaskIdle),
+				() => instance.off(GalaxiaEventName.TaskUserMessage, onTaskUserMessage),
+				() => instance.off(GalaxiaEventName.TaskPaused, onTaskPaused),
+				() => instance.off(GalaxiaEventName.TaskUnpaused, onTaskUnpaused),
+				() => instance.off(GalaxiaEventName.TaskSpawned, onTaskSpawned),
+				() => instance.off(GalaxiaEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
 			])
 		}
 
-		// Initialize Roo Code Cloud profile sync.
+		// Initialize Galaxia Cloud profile sync.
 		if (CloudService.hasInstance()) {
 			this.initializeCloudProfileSync().catch((error) => {
 				this.log(`Failed to initialize cloud profile sync: ${error}`)
@@ -407,7 +407,7 @@ export class ClineProvider
 		// Add this cline instance into the stack that represents the order of
 		// all the called tasks.
 		this.clineStack.push(task)
-		task.emit(RooCodeEventName.TaskFocused)
+		task.emit(GalaxiaEventName.TaskFocused)
 
 		// Perform special setup provider specific tasks.
 		await this.performPreparationTasks(task)
@@ -449,7 +449,7 @@ export class ClineProvider
 		let task = this.clineStack.pop()
 
 		if (task) {
-			task.emit(RooCodeEventName.TaskUnfocused)
+			task.emit(GalaxiaEventName.TaskUnfocused)
 
 			try {
 				// Abort the running task and set isAbandoned to true so
@@ -968,7 +968,7 @@ export class ClineProvider
 
 			// Replace the task in the stack
 			this.clineStack[stackIndex] = task
-			task.emit(RooCodeEventName.TaskFocused)
+			task.emit(GalaxiaEventName.TaskFocused)
 
 			// Perform preparation tasks and set up event listeners
 			await this.performPreparationTasks(task)
@@ -1125,7 +1125,7 @@ export class ClineProvider
 						window.AUDIO_BASE_URI = "${audioUri}"
 						window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 					</script>
-					<title>Roo Code</title>
+					<title>Galaxia</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -1196,7 +1196,7 @@ export class ClineProvider
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
             <meta name="theme-color" content="#000000">
-            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource} data:; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} https://storage.googleapis.com https://img.clerk.com data:; media-src ${webview.cspSource}; script-src ${webview.cspSource} 'wasm-unsafe-eval' 'nonce-${nonce}' https://ph.roocode.com 'strict-dynamic'; connect-src ${webview.cspSource} ${openRouterDomain} https://api.requesty.ai https://ph.roocode.com;">
+            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource} data:; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} https://storage.googleapis.com https://img.clerk.com data:; media-src ${webview.cspSource}; script-src ${webview.cspSource} 'wasm-unsafe-eval' 'nonce-${nonce}'  'strict-dynamic'; connect-src ${webview.cspSource} ${openRouterDomain} https://api.requesty.ai ;">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
 			<link href="${codiconsUri}" rel="stylesheet" />
 			<script nonce="${nonce}">
@@ -1204,7 +1204,7 @@ export class ClineProvider
 				window.AUDIO_BASE_URI = "${audioUri}"
 				window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 			</script>
-            <title>Roo Code</title>
+            <title>Galaxia</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -1238,7 +1238,7 @@ export class ClineProvider
 
 		if (task) {
 			TelemetryService.instance.captureModeSwitch(task.taskId, newMode)
-			task.emit(RooCodeEventName.TaskModeSwitched, task.taskId, newMode)
+			task.emit(GalaxiaEventName.TaskModeSwitched, task.taskId, newMode)
 
 			try {
 				// Update the task history with the new mode first.
@@ -1266,7 +1266,7 @@ export class ClineProvider
 
 		await this.updateGlobalState("mode", newMode)
 
-		this.emit(RooCodeEventName.ModeChanged, newMode)
+		this.emit(GalaxiaEventName.ModeChanged, newMode)
 
 		// Load the saved API config for the new mode if it exists.
 		const savedConfigId = await this.providerSettingsManager.getModeConfigId(newMode)
@@ -1454,7 +1454,7 @@ export class ClineProvider
 		await this.postStateToWebview()
 
 		if (providerSettings.apiProvider) {
-			this.emit(RooCodeEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
+			this.emit(GalaxiaEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
 		}
 	}
 
@@ -2089,7 +2089,7 @@ export class ClineProvider
 			// undefined means no MDM policy, true means compliant, false means non-compliant
 			mdmCompliant: this.mdmService?.requiresCloudAuth() ? this.checkMdmCompliance() : undefined,
 			profileThresholds: profileThresholds ?? {},
-			cloudApiUrl: getRooCodeApiUrl(),
+			cloudApiUrl: getGalaxiaApiUrl(),
 			hasOpenedModeSelector: this.getGlobalState("hasOpenedModeSelector") ?? false,
 			alwaysAllowFollowupQuestions: alwaysAllowFollowupQuestions ?? false,
 			followupAutoApproveTimeoutMs: followupAutoApproveTimeoutMs ?? 60000,
@@ -2378,11 +2378,11 @@ export class ClineProvider
 		return this.contextProxy.getValue(key)
 	}
 
-	public async setValue<K extends keyof RooCodeSettings>(key: K, value: RooCodeSettings[K]) {
+	public async setValue<K extends keyof GalaxiaSettings>(key: K, value: GalaxiaSettings[K]) {
 		await this.contextProxy.setValue(key, value)
 	}
 
-	public getValue<K extends keyof RooCodeSettings>(key: K) {
+	public getValue<K extends keyof GalaxiaSettings>(key: K) {
 		return this.contextProxy.getValue(key)
 	}
 
@@ -2390,7 +2390,7 @@ export class ClineProvider
 		return this.contextProxy.getValues()
 	}
 
-	public async setValues(values: RooCodeSettings) {
+	public async setValues(values: GalaxiaSettings) {
 		await this.contextProxy.setValues(values)
 	}
 
@@ -2651,7 +2651,7 @@ export class ClineProvider
 		images?: string[],
 		parentTask?: Task,
 		options: CreateTaskOptions = {},
-		configuration: RooCodeSettings = {},
+		configuration: GalaxiaSettings = {},
 	): Promise<Task> {
 		if (configuration) {
 			await this.setValues(configuration)

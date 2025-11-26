@@ -1,4 +1,4 @@
-import * as fs from "fs"
+﻿import * as fs from "fs"
 import * as path from "path"
 import * as os from "node:os"
 
@@ -9,11 +9,11 @@ import {
 	type TaskEvent,
 	type ClineSay,
 	TaskCommandName,
-	RooCodeEventName,
+	GalaxiaEventName,
 	IpcMessageType,
 	EVALS_SETTINGS,
-} from "@roo-code/types"
-import { IpcClient } from "@roo-code/ipc"
+} from "@galaxia/types"
+import { IpcClient } from "@galaxia/ipc"
 
 import {
 	type Run,
@@ -78,7 +78,7 @@ export const processTask = async ({
 		await updateTask(task.id, { passed })
 
 		await publish({
-			eventName: passed ? RooCodeEventName.EvalPass : RooCodeEventName.EvalFail,
+			eventName: passed ? GalaxiaEventName.EvalPass : GalaxiaEventName.EvalFail,
 			taskId: task.id,
 		})
 	} finally {
@@ -109,7 +109,7 @@ export const processTaskInContainer = async ({
 		baseArgs.push(`-e ROO_CODE_CLOUD_TOKEN=${jobToken}`)
 	}
 
-	const command = `pnpm --filter @roo-code/evals cli --taskId ${taskId}`
+	const command = `pnpm --filter @galaxia/evals cli --taskId ${taskId}`
 	logger.info(command)
 
 	for (let attempt = 0; attempt <= maxRetries; attempt++) {
@@ -224,9 +224,9 @@ export const runTask = async ({ run, task, publish, logger, jobToken }: RunTaskO
 	let rooTaskId: string | undefined
 	let isClientDisconnected = false
 
-	const ignoreEvents: Record<"broadcast" | "log", RooCodeEventName[]> = {
-		broadcast: [RooCodeEventName.Message],
-		log: [RooCodeEventName.TaskTokenUsageUpdated, RooCodeEventName.TaskAskResponded],
+	const ignoreEvents: Record<"broadcast" | "log", GalaxiaEventName[]> = {
+		broadcast: [GalaxiaEventName.Message],
+		log: [GalaxiaEventName.TaskTokenUsageUpdated, GalaxiaEventName.TaskAskResponded],
 	}
 
 	const loggableSays: ClineSay[] = [
@@ -246,7 +246,7 @@ export const runTask = async ({ run, task, publish, logger, jobToken }: RunTaskO
 		const { eventName, payload } = taskEvent
 
 		if (
-			eventName === RooCodeEventName.Message &&
+			eventName === GalaxiaEventName.Message &&
 			payload[0].message.say &&
 			["api_req_retry_delayed", "api_req_retried"].includes(payload[0].message.say)
 		) {
@@ -262,14 +262,14 @@ export const runTask = async ({ run, task, publish, logger, jobToken }: RunTaskO
 		// For message events we only log non-partial messages.
 		if (
 			!ignoreEvents.log.includes(eventName) &&
-			(eventName !== RooCodeEventName.Message ||
+			(eventName !== GalaxiaEventName.Message ||
 				(payload[0].message.say && loggableSays.includes(payload[0].message.say)) ||
 				payload[0].message.partial !== true)
 		) {
 			logger.info(`${eventName} ->`, payload)
 		}
 
-		if (eventName === RooCodeEventName.TaskStarted) {
+		if (eventName === GalaxiaEventName.TaskStarted) {
 			taskStartedAt = Date.now()
 
 			const taskMetrics = await createTaskMetrics({
@@ -289,13 +289,13 @@ export const runTask = async ({ run, task, publish, logger, jobToken }: RunTaskO
 			rooTaskId = payload[0]
 		}
 
-		if (eventName === RooCodeEventName.TaskToolFailed) {
+		if (eventName === GalaxiaEventName.TaskToolFailed) {
 			const [_taskId, toolName, error] = payload
 			await createToolError({ taskId: task.id, toolName, error })
 		}
 
 		if (
-			(eventName === RooCodeEventName.TaskTokenUsageUpdated || eventName === RooCodeEventName.TaskCompleted) &&
+			(eventName === GalaxiaEventName.TaskTokenUsageUpdated || eventName === GalaxiaEventName.TaskCompleted) &&
 			taskMetricsId
 		) {
 			const duration = Date.now() - taskStartedAt
@@ -314,16 +314,16 @@ export const runTask = async ({ run, task, publish, logger, jobToken }: RunTaskO
 			})
 		}
 
-		if (eventName === RooCodeEventName.TaskCompleted && taskMetricsId) {
+		if (eventName === GalaxiaEventName.TaskCompleted && taskMetricsId) {
 			const toolUsage = payload[2]
 			await updateTaskMetrics(taskMetricsId, { toolUsage })
 		}
 
-		if (eventName === RooCodeEventName.TaskAborted) {
+		if (eventName === GalaxiaEventName.TaskAborted) {
 			taskAbortedAt = Date.now()
 		}
 
-		if (eventName === RooCodeEventName.TaskCompleted) {
+		if (eventName === GalaxiaEventName.TaskCompleted) {
 			taskFinishedAt = Date.now()
 		}
 	})

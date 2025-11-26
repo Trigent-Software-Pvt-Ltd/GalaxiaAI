@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from "react"
 import deepEqual from "fast-deep-equal"
 import { useTranslation } from "react-i18next"
-import type { ClineMessage } from "@roo-code/types"
+import type { ClineMessage } from "@galaxia/types"
 
 import { BrowserAction, BrowserActionResult, ClineSayBrowserAction } from "@roo/ExtensionMessage"
 

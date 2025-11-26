@@ -30,7 +30,7 @@ import {
 	BEDROCK_1M_CONTEXT_MODEL_IDS,
 	isDynamicProvider,
 	getProviderDefaultModelId,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import type { ModelRecord, RouterModels } from "@roo/api"
 

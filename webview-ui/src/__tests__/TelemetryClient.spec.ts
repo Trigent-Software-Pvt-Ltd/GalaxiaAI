@@ -1,4 +1,4 @@
-import posthog from "posthog-js"
+﻿import posthog from "posthog-js"
 
 import { telemetryClient } from "@src/utils/TelemetryClient"
 
@@ -55,7 +55,7 @@ describe("TelemetryClient", () => {
 			expect(posthog.init).toHaveBeenCalledWith(
 				API_KEY,
 				expect.objectContaining({
-					api_host: "https://ph.roocode.com",
+					api_host: "",
 					persistence: "localStorage",
 					loaded: expect.any(Function),
 				}),

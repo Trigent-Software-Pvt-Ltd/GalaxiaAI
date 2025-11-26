@@ -4,8 +4,8 @@ import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowDown, ArrowUp, ArrowUpDown, Rocket } from "lucide-react"
 
-import type { Run, TaskMetrics } from "@roo-code/evals"
-import type { ToolName } from "@roo-code/types"
+import type { Run, TaskMetrics } from "@galaxia/evals"
+import type { ToolName } from "@galaxia/types"
 
 import {
 	Button,

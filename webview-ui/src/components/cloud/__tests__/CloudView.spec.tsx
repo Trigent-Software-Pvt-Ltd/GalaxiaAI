@@ -1,4 +1,4 @@
-import { render, screen } from "@/utils/test-utils"
+﻿import { render, screen } from "@/utils/test-utils"
 
 import { CloudView } from "../CloudView"
 
@@ -9,24 +9,24 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 			const translations: Record<string, string> = {
 				"cloud:title": "Cloud",
 				"settings:common.done": "Done",
-				"cloud:signIn": "Connect to Roo Code Cloud",
-				"cloud:cloudBenefitsTitle": "Connect to Roo Code Cloud",
+				"cloud:signIn": "Connect to Galaxia Cloud",
+				"cloud:cloudBenefitsTitle": "Connect to Galaxia Cloud",
 				"cloud:cloudBenefitSharing": "Share tasks with others",
 				"cloud:cloudBenefitHistory": "Access your task history",
 				"cloud:cloudBenefitMetrics": "Get a holistic view of your token consumption",
 				"cloud:logOut": "Log out",
 				"cloud:connect": "Connect Now",
-				"cloud:visitCloudWebsite": "Visit Roo Code Cloud",
+				"cloud:visitCloudWebsite": "Visit Galaxia Cloud",
 				"cloud:taskSync": "Task sync",
-				"cloud:taskSyncDescription": "Sync your tasks for viewing and sharing on Roo Code Cloud",
+				"cloud:taskSyncDescription": "Sync your tasks for viewing and sharing on Galaxia Cloud",
 				"cloud:taskSyncManagedByOrganization": "Task sync is managed by your organization",
 				"cloud:remoteControl": "Roomote Control",
 				"cloud:remoteControlDescription":
-					"Enable following and interacting with tasks in this workspace with Roo Code Cloud",
+					"Enable following and interacting with tasks in this workspace with Galaxia Cloud",
 				"cloud:remoteControlRequiresTaskSync": "Task sync must be enabled to use Roomote Control",
 				"cloud:usageMetricsAlwaysReported": "Model usage info is always reported when logged in",
 				"cloud:profilePicture": "Profile picture",
-				"cloud:cloudUrlPillLabel": "Roo Code Cloud URL: ",
+				"cloud:cloudUrlPillLabel": "Galaxia Cloud URL: ",
 			}
 			return translations[key] || key
 		},
@@ -73,13 +73,13 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={null}
 				isAuthenticated={false}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
 
 		// Check that the benefits section is displayed
-		expect(screen.getByRole("heading", { name: "Connect to Roo Code Cloud" })).toBeInTheDocument()
+		expect(screen.getByRole("heading", { name: "Connect to Galaxia Cloud" })).toBeInTheDocument()
 		expect(screen.getByText("Share tasks with others")).toBeInTheDocument()
 		expect(screen.getByText("Access your task history")).toBeInTheDocument()
 		expect(screen.getByText("Get a holistic view of your token consumption")).toBeInTheDocument()
@@ -98,7 +98,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -127,7 +127,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -136,7 +136,7 @@ describe("CloudView", () => {
 		expect(screen.getByTestId("remote-control-toggle")).toBeInTheDocument()
 		expect(screen.getByText("Roomote Control")).toBeInTheDocument()
 		expect(
-			screen.getByText("Enable following and interacting with tasks in this workspace with Roo Code Cloud"),
+			screen.getByText("Enable following and interacting with tasks in this workspace with Galaxia Cloud"),
 		).toBeInTheDocument()
 	})
 
@@ -151,7 +151,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -176,7 +176,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -206,7 +206,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -230,13 +230,13 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
 
 		// Check that the cloud URL pill is NOT displayed for production URL
-		expect(screen.queryByText(/Roo Code Cloud URL:/)).not.toBeInTheDocument()
+		expect(screen.queryByText(/Galaxia Cloud URL:/)).not.toBeInTheDocument()
 	})
 
 	it("should display cloud URL pill when pointing to non-production environment", () => {
@@ -249,14 +249,14 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://staging.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
 
 		// Check that the cloud URL pill is displayed with the staging URL
-		expect(screen.getByText(/Roo Code Cloud URL:/)).toBeInTheDocument()
-		expect(screen.getByText("https://staging.roocode.com")).toBeInTheDocument()
+		expect(screen.getByText(/Galaxia Cloud URL:/)).toBeInTheDocument()
+		expect(screen.getByText("")).toBeInTheDocument()
 	})
 
 	it("should display cloud URL pill for non-authenticated users when not pointing to production", () => {
@@ -264,14 +264,14 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={null}
 				isAuthenticated={false}
-				cloudApiUrl="https://dev.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
 
 		// Check that the cloud URL pill is displayed even when not authenticated
-		expect(screen.getByText(/Roo Code Cloud URL:/)).toBeInTheDocument()
-		expect(screen.getByText("https://dev.roocode.com")).toBeInTheDocument()
+		expect(screen.getByText(/Galaxia Cloud URL:/)).toBeInTheDocument()
+		expect(screen.getByText("")).toBeInTheDocument()
 	})
 
 	it("should not display cloud URL pill when cloudApiUrl is undefined", () => {
@@ -283,7 +283,7 @@ describe("CloudView", () => {
 		render(<CloudView userInfo={mockUserInfo} isAuthenticated={true} onDone={() => {}} />)
 
 		// Check that the cloud URL pill is NOT displayed when cloudApiUrl is undefined
-		expect(screen.queryByText(/Roo Code Cloud URL:/)).not.toBeInTheDocument()
+		expect(screen.queryByText(/Galaxia Cloud URL:/)).not.toBeInTheDocument()
 	})
 
 	it("should disable task sync toggle for organization users", () => {
@@ -298,7 +298,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -330,7 +330,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)
@@ -357,7 +357,7 @@ describe("CloudView", () => {
 			<CloudView
 				userInfo={mockUserInfo}
 				isAuthenticated={true}
-				cloudApiUrl="https://app.roocode.com"
+				cloudApiUrl=""
 				onDone={() => {}}
 			/>,
 		)

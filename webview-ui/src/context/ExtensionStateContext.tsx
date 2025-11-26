@@ -12,7 +12,7 @@ import {
 	type CloudOrganizationMembership,
 	ORGANIZATION_ALLOW_ALL,
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { ExtensionMessage, ExtensionState, MarketplaceInstalledMetadata, Command } from "@roo/ExtensionMessage"
 import { findLastIndex } from "@roo/array"

@@ -38,7 +38,7 @@ vi.mock("../checkpointRestoreHandler", () => ({
 // Import after mocks
 import { webviewMessageHandler } from "../webviewMessageHandler"
 import type { ClineProvider } from "../ClineProvider"
-import type { ClineMessage } from "@roo-code/types"
+import type { ClineMessage } from "@galaxia/types"
 import type { ApiMessage } from "../../task-persistence/apiMessages"
 
 describe("webviewMessageHandler - Edit Message with Timestamp Fallback", () => {

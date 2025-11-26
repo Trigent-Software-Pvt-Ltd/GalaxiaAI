@@ -1,8 +1,8 @@
-import { Anthropic } from "@anthropic-ai/sdk"
+﻿import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
 
-import { rooDefaultModelId, getApiProtocol, type ImageGenerationApiMethod } from "@roo-code/types"
-import { CloudService } from "@roo-code/cloud"
+import { rooDefaultModelId, getApiProtocol, type ImageGenerationApiMethod } from "@galaxia/types"
+import { CloudService } from "@galaxia/cloud"
 
 import type { ApiHandlerOptions, ModelRecord } from "../../shared/api"
 import { ApiStream } from "../transform/stream"
@@ -18,7 +18,7 @@ import { handleOpenAIError } from "./utils/openai-error-handler"
 import { generateImageWithProvider, generateImageWithImagesApi, ImageGenerationResult } from "./utils/image-generation"
 import { t } from "../../i18n"
 
-import type { ModelInfo } from "@roo-code/types"
+import type { ModelInfo } from "@galaxia/types"
 
 // Model-specific defaults that should be applied even when models come from API cache
 const MODEL_DEFAULTS: Record<string, Partial<ModelInfo>> = {
@@ -52,7 +52,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 	constructor(options: ApiHandlerOptions) {
 		const sessionToken = getSessionToken()
 
-		let baseURL = process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy"
+		let baseURL = process.env.GALAXIA_PROVIDER_URL ?? "/proxy"
 
 		// Ensure baseURL ends with /v1 for OpenAI client, but don't duplicate it
 		if (!baseURL.endsWith("/v1")) {
@@ -63,7 +63,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		// The provider-proxy server will return 401 if authentication fails.
 		super({
 			...options,
-			providerName: "Roo Code Cloud",
+			providerName: "Galaxia Cloud",
 			baseURL, // Already has /v1 suffix
 			apiKey: sessionToken,
 			defaultProviderModelId: rooDefaultModelId,
@@ -286,7 +286,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 	}
 
 	/**
-	 * Generate an image using Roo Code Cloud's image generation API
+	 * Generate an image using Galaxia Cloud's image generation API
 	 * @param prompt The text prompt for image generation
 	 * @param model The model to use for generation
 	 * @param inputImage Optional base64 encoded input image data URL

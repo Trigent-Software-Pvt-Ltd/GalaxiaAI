@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest"
 import type OpenAI from "openai"
-import type { ModeConfig } from "@roo-code/types"
+import type { ModeConfig } from "@galaxia/types"
 import { filterNativeToolsForMode, filterMcpToolsForMode } from "../filter-tools-for-mode"
 
 describe("filterNativeToolsForMode", () => {

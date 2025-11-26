@@ -1,6 +1,6 @@
-{
-	"greeting": "¡Bienvenido a Roo Code!",
-	"introduction": "Con una variedad de Modos integrados y extensibles, Roo Code te permite planificar, arquitectar, codificar, depurar y aumentar tu productividad como nunca antes.",
+﻿{
+	"greeting": "¡Bienvenido a Galaxia!",
+	"introduction": "Con una variedad de Modos integrados y extensibles, Galaxia te permite planificar, arquitectar, codificar, depurar y aumentar tu productividad como nunca antes.",
 	"notice": "Para comenzar, esta extensión necesita un proveedor de API.",
 	"start": "¡Vamos!",
 	"routers": {
@@ -18,7 +18,7 @@
 	},
 	"chooseProvider": "Para comenzar, necesitas un proveedor LLM:",
 	"providerSignup": {
-		"rooCloudProvider": "Proveedor Roo Code Cloud",
+		"rooCloudProvider": "Proveedor Galaxia Cloud",
 		"rooCloudDescription": "La forma más sencilla de usar Roo. Una mezcla seleccionada de modelos gratuitos y de pago a bajo costo",
 		"learnMore": "más información",
 		"useAnotherProvider": "Usar otro proveedor",
@@ -28,8 +28,8 @@
 	"startRouter": "Recomendamos usar un router LLM:",
 	"startCustom": "O puedes traer tu propia clave API:",
 	"telemetry": {
-		"helpImprove": "Ayuda a mejorar Roo Code",
-		"helpImproveMessage": "Roo Code recopila datos de errores y uso para ayudarnos a corregir errores y mejorar la extensión. Esta telemetría no recopila código, prompts o información personal. Puedes desactivar esto en la <settingsLink>configuración</settingsLink>."
+		"helpImprove": "Ayuda a mejorar Galaxia",
+		"helpImproveMessage": "Galaxia recopila datos de errores y uso para ayudarnos a corregir errores y mejorar la extensión. Esta telemetría no recopila código, prompts o información personal. Puedes desactivar esto en la <settingsLink>configuración</settingsLink>."
 	},
 	"importSettings": "Importar configuración"
 }

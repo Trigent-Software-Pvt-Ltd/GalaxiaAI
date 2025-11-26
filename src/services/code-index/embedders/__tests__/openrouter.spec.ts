@@ -1,4 +1,4 @@
-import type { MockedClass, MockedFunction } from "vitest"
+﻿import type { MockedClass, MockedFunction } from "vitest"
 import { describe, it, expect, beforeEach, vi } from "vitest"
 import { OpenAI } from "openai"
 import { OpenRouterEmbedder } from "../openrouter"
@@ -8,7 +8,7 @@ import { getModelDimension, getDefaultModelId } from "../../../../shared/embeddi
 vi.mock("openai")
 
 // Mock TelemetryService
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@galaxia/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureEvent: vi.fn(),
@@ -90,8 +90,8 @@ describe("OpenRouterEmbedder", () => {
 				baseURL: "https://openrouter.ai/api/v1",
 				apiKey: mockApiKey,
 				defaultHeaders: {
-					"HTTP-Referer": "https://github.com/RooCodeInc/Roo-Code",
-					"X-Title": "Roo Code",
+					"HTTP-Referer": "https://github.com/TrigentSoftwareInc/Roo-Code",
+					"X-Title": "Galaxia",
 				},
 			})
 		})

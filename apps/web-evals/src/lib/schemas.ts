@@ -1,6 +1,6 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
-import { rooCodeSettingsSchema } from "@roo-code/types"
+import { GalaxiaSettingsSchema } from "@galaxia/types"
 
 /**
  * CreateRun
@@ -20,7 +20,7 @@ export const createRunSchema = z
 		description: z.string().optional(),
 		suite: z.enum(["full", "partial"]),
 		exercises: z.array(z.string()).optional(),
-		settings: rooCodeSettingsSchema.optional(),
+		settings: GalaxiaSettingsSchema.optional(),
 		concurrency: z.number().int().min(CONCURRENCY_MIN).max(CONCURRENCY_MAX),
 		timeout: z.number().int().min(TIMEOUT_MIN).max(TIMEOUT_MAX),
 		jobToken: z.string().optional(),

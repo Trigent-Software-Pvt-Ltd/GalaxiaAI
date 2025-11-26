@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+﻿import * as vscode from "vscode"
 import * as dotenvx from "@dotenvx/dotenvx"
 import * as path from "path"
 
@@ -12,9 +12,9 @@ try {
 	console.warn("Failed to load environment variables:", e)
 }
 
-import type { CloudUserInfo, AuthState } from "@roo-code/types"
-import { CloudService, BridgeOrchestrator } from "@roo-code/cloud"
-import { TelemetryService, PostHogTelemetryClient } from "@roo-code/telemetry"
+import type { CloudUserInfo, AuthState } from "@galaxia/types"
+import { CloudService, BridgeOrchestrator } from "@galaxia/cloud"
+import { TelemetryService, PostHogTelemetryClient } from "@galaxia/telemetry"
 
 import "./utils/path" // Necessary to have access to String.prototype.toPosix.
 import { createOutputChannelLogger, createDualLogger } from "./utils/outputChannelLogger"
@@ -123,10 +123,10 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 	}
 
-	// Initialize the provider *before* the Roo Code Cloud service.
+	// Initialize the provider *before* the Galaxia Cloud service.
 	const provider = new ClineProvider(context, outputChannel, "sidebar", contextProxy, mdmService)
 
-	// Initialize Roo Code Cloud service.
+	// Initialize Galaxia Cloud service.
 	const postStateListener = () => ClineProvider.getVisibleInstance()?.postStateToWebview()
 
 	authStateChangedHandler = async (data: { state: AuthState; previousState: AuthState }) => {
@@ -316,7 +316,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Allows other extensions to activate once Roo is ready.
 	vscode.commands.executeCommand(`${Package.name}.activationCompleted`)
 
-	// Implements the `RooCodeAPI` interface.
+	// Implements the `GalaxiaAPI` interface.
 	const socketPath = process.env.ROO_CODE_IPC_SOCKET_PATH
 	const enableLogging = typeof socketPath === "string"
 
@@ -326,7 +326,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			{ path: context.extensionPath, pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/types"), pattern: "**/*.ts" },
 			{ path: path.join(context.extensionPath, "../packages/telemetry"), pattern: "**/*.ts" },
-			{ path: path.join(context.extensionPath, "node_modules/@roo-code/cloud"), pattern: "**/*" },
+			{ path: path.join(context.extensionPath, "node_modules/@galaxia/cloud"), pattern: "**/*" },
 		]
 
 		console.log(

@@ -1,4 +1,4 @@
-import * as vscode from "vscode"
+﻿import * as vscode from "vscode"
 import { ZodError } from "zod"
 
 import {
@@ -11,18 +11,18 @@ import {
 	type GlobalSettings,
 	type SecretState,
 	type GlobalState,
-	type RooCodeSettings,
+	type GalaxiaSettings,
 	providerSettingsSchema,
 	globalSettingsSchema,
 	isSecretStateKey,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
 
 import { logger } from "../../utils/logging"
 
 type GlobalStateKey = keyof GlobalState
 type SecretStateKey = keyof SecretState
-type RooCodeSettingsKey = keyof RooCodeSettings
+type GalaxiaSettingsKey = keyof GalaxiaSettings
 
 const PASS_THROUGH_STATE_KEYS = ["taskHistory"]
 
@@ -302,22 +302,22 @@ export class ContextProxy {
 	}
 
 	/**
-	 * RooCodeSettings
+	 * GalaxiaSettings
 	 */
 
-	public async setValue<K extends RooCodeSettingsKey>(key: K, value: RooCodeSettings[K]) {
+	public async setValue<K extends GalaxiaSettingsKey>(key: K, value: GalaxiaSettings[K]) {
 		return isSecretStateKey(key)
 			? this.storeSecret(key as SecretStateKey, value as string)
 			: this.updateGlobalState(key as GlobalStateKey, value)
 	}
 
-	public getValue<K extends RooCodeSettingsKey>(key: K): RooCodeSettings[K] {
+	public getValue<K extends GalaxiaSettingsKey>(key: K): GalaxiaSettings[K] {
 		return isSecretStateKey(key)
-			? (this.getSecret(key as SecretStateKey) as RooCodeSettings[K])
-			: (this.getGlobalState(key as GlobalStateKey) as RooCodeSettings[K])
+			? (this.getSecret(key as SecretStateKey) as GalaxiaSettings[K])
+			: (this.getGlobalState(key as GlobalStateKey) as GalaxiaSettings[K])
 	}
 
-	public getValues(): RooCodeSettings {
+	public getValues(): GalaxiaSettings {
 		const globalState = this.getAllGlobalState()
 		const secretState = this.getAllSecretState()
 
@@ -325,8 +325,8 @@ export class ContextProxy {
 		return { ...globalState, ...secretState }
 	}
 
-	public async setValues(values: RooCodeSettings) {
-		const entries = Object.entries(values) as [RooCodeSettingsKey, unknown][]
+	public async setValues(values: GalaxiaSettings) {
+		const entries = Object.entries(values) as [GalaxiaSettingsKey, unknown][]
 		await Promise.all(entries.map(([key, value]) => this.setValue(key, value)))
 	}
 

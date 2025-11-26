@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next"
+﻿import { useTranslation } from "react-i18next"
 
 import { render, screen, fireEvent, waitFor } from "@/utils/test-utils"
 
@@ -20,8 +20,8 @@ vi.mock("qrcode", () => ({
 vi.mock("react-i18next")
 
 // Mock the cloud config
-vi.mock("@roo-code/cloud/src/config", () => ({
-	getRooCodeApiUrl: vi.fn(() => "https://app.roocode.com"),
+vi.mock("@galaxia/cloud/src/config", () => ({
+	getGalaxiaApiUrl: vi.fn(() => ""),
 }))
 
 // Mock the extension state context
@@ -70,7 +70,7 @@ describe("CloudTaskButton", () => {
 				email: "test@example.com",
 				extensionBridgeEnabled: true,
 			},
-			cloudApiUrl: "https://app.roocode.com",
+			cloudApiUrl: "",
 		} as any)
 	})
 
@@ -89,7 +89,7 @@ describe("CloudTaskButton", () => {
 				email: "test@example.com",
 				extensionBridgeEnabled: false,
 			},
-			cloudApiUrl: "https://app.roocode.com",
+			cloudApiUrl: "",
 		} as any)
 
 		render(<CloudTaskButton item={mockItem} />)
@@ -100,7 +100,7 @@ describe("CloudTaskButton", () => {
 	test("does not render when cloudUserInfo is null", () => {
 		mockUseExtensionState.mockReturnValue({
 			cloudUserInfo: null,
-			cloudApiUrl: "https://app.roocode.com",
+			cloudApiUrl: "",
 		} as any)
 
 		render(<CloudTaskButton item={mockItem} />)
@@ -133,7 +133,7 @@ describe("CloudTaskButton", () => {
 		fireEvent.click(button)
 
 		await waitFor(() => {
-			const input = screen.getByDisplayValue("https://app.roocode.com/task/test-task-id")
+			const input = screen.getByDisplayValue("/task/test-task-id")
 			expect(input).toBeInTheDocument()
 			expect(input).toBeDisabled()
 		})
@@ -218,17 +218,17 @@ describe("CloudTaskButton", () => {
 		})
 	})
 
-	test("uses correct URL from getRooCodeApiUrl", async () => {
-		// Mock getRooCodeApiUrl to return a custom URL
-		vi.doMock("@roo-code/cloud/src/config", () => ({
-			getRooCodeApiUrl: vi.fn(() => "https://custom.roocode.com"),
+	test("uses correct URL from getGalaxiaApiUrl", async () => {
+		// Mock getGalaxiaApiUrl to return a custom URL
+		vi.doMock("@galaxia/cloud/src/config", () => ({
+			getGalaxiaApiUrl: vi.fn(() => "https://custom.Galaxia.com"),
 		}))
 
 		// Clear module cache and re-import to get the mocked version
 		vi.resetModules()
 
 		// Since we can't easily test the dynamic import, let's skip this specific test
-		// The functionality is already covered by the main component using getRooCodeApiUrl
+		// The functionality is already covered by the main component using getGalaxiaApiUrl
 		expect(true).toBe(true)
 	})
 })

@@ -1,8 +1,8 @@
 // npx vitest src/core/condense/__tests__/condense.spec.ts
 
 import { Anthropic } from "@anthropic-ai/sdk"
-import type { ModelInfo } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+import type { ModelInfo } from "@galaxia/types"
+import { TelemetryService } from "@galaxia/telemetry"
 
 import { BaseProvider } from "../../../api/providers/base-provider"
 import { ApiMessage } from "../../task-persistence/apiMessages"

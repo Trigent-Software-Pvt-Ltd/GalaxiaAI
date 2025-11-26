@@ -1,5 +1,5 @@
 import type OpenAI from "openai"
-import type { ProviderSettings, ModeConfig } from "@roo-code/types"
+import type { ProviderSettings, ModeConfig } from "@galaxia/types"
 import type { ClineProvider } from "../webview/ClineProvider"
 import { getNativeTools, getMcpServerTools } from "../prompts/tools/native-tools"
 import { filterNativeToolsForMode, filterMcpToolsForMode } from "../prompts/tools/filter-tools-for-mode"

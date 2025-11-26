@@ -1,8 +1,8 @@
 import { DiffStrategy } from "../../../shared/tools"
 import { CodeIndexManager } from "../../../services/code-index/manager"
 import type { SystemPromptSettings } from "../types"
-import { getEffectiveProtocol, isNativeProtocol } from "@roo-code/types"
-import type { ModeConfig, ToolName } from "@roo-code/types"
+import { getEffectiveProtocol, isNativeProtocol } from "@galaxia/types"
+import type { ModeConfig, ToolName } from "@galaxia/types"
 import { getAvailableToolsInGroup } from "../tools/filter-tools-for-mode"
 
 function getEditingInstructions(

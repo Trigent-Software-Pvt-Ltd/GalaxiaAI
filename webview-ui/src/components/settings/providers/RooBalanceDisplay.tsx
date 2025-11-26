@@ -1,4 +1,4 @@
-import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
+﻿import { VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 
 import { useRooCreditBalance } from "@/components/ui/hooks/useRooCreditBalance"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
@@ -12,7 +12,7 @@ export const RooBalanceDisplay = () => {
 	}
 
 	const formattedBalance = balance.toFixed(2)
-	const billingUrl = cloudApiUrl ? `${cloudApiUrl.replace(/\/$/, "")}/billing` : "https://app.roocode.com/billing"
+	const billingUrl = cloudApiUrl ? `${cloudApiUrl.replace(/\/$/, "")}/billing` : "/billing"
 
 	return (
 		<VSCodeLink href={billingUrl} className="text-vscode-foreground hover:underline whitespace-nowrap">

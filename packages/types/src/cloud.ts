@@ -1,8 +1,8 @@
-import EventEmitter from "events"
+﻿import EventEmitter from "events"
 
 import { z } from "zod"
 
-import { RooCodeEventName } from "./events.js"
+import { GalaxiaEventName } from "./events.js"
 import { TaskStatus, taskMetadataSchema } from "./task.js"
 import { globalSettingsSchema } from "./global-settings.js"
 import { providerSettingsWithIdSchema } from "./provider-settings.js"
@@ -426,27 +426,27 @@ export type ExtensionInstance = z.infer<typeof extensionInstanceSchema>
  */
 
 export enum ExtensionBridgeEventName {
-	TaskCreated = RooCodeEventName.TaskCreated,
-	TaskStarted = RooCodeEventName.TaskStarted,
-	TaskCompleted = RooCodeEventName.TaskCompleted,
-	TaskAborted = RooCodeEventName.TaskAborted,
-	TaskFocused = RooCodeEventName.TaskFocused,
-	TaskUnfocused = RooCodeEventName.TaskUnfocused,
-	TaskActive = RooCodeEventName.TaskActive,
-	TaskInteractive = RooCodeEventName.TaskInteractive,
-	TaskResumable = RooCodeEventName.TaskResumable,
-	TaskIdle = RooCodeEventName.TaskIdle,
+	TaskCreated = GalaxiaEventName.TaskCreated,
+	TaskStarted = GalaxiaEventName.TaskStarted,
+	TaskCompleted = GalaxiaEventName.TaskCompleted,
+	TaskAborted = GalaxiaEventName.TaskAborted,
+	TaskFocused = GalaxiaEventName.TaskFocused,
+	TaskUnfocused = GalaxiaEventName.TaskUnfocused,
+	TaskActive = GalaxiaEventName.TaskActive,
+	TaskInteractive = GalaxiaEventName.TaskInteractive,
+	TaskResumable = GalaxiaEventName.TaskResumable,
+	TaskIdle = GalaxiaEventName.TaskIdle,
 
-	TaskPaused = RooCodeEventName.TaskPaused,
-	TaskUnpaused = RooCodeEventName.TaskUnpaused,
-	TaskSpawned = RooCodeEventName.TaskSpawned,
+	TaskPaused = GalaxiaEventName.TaskPaused,
+	TaskUnpaused = GalaxiaEventName.TaskUnpaused,
+	TaskSpawned = GalaxiaEventName.TaskSpawned,
 
-	TaskUserMessage = RooCodeEventName.TaskUserMessage,
+	TaskUserMessage = GalaxiaEventName.TaskUserMessage,
 
-	TaskTokenUsageUpdated = RooCodeEventName.TaskTokenUsageUpdated,
+	TaskTokenUsageUpdated = GalaxiaEventName.TaskTokenUsageUpdated,
 
-	ModeChanged = RooCodeEventName.ModeChanged,
-	ProviderProfileChanged = RooCodeEventName.ProviderProfileChanged,
+	ModeChanged = GalaxiaEventName.ModeChanged,
+	ProviderProfileChanged = GalaxiaEventName.ProviderProfileChanged,
 
 	InstanceRegistered = "instance_registered",
 	InstanceUnregistered = "instance_unregistered",
@@ -608,9 +608,9 @@ export type ExtensionBridgeCommand = z.infer<typeof extensionBridgeCommandSchema
  */
 
 export enum TaskBridgeEventName {
-	Message = RooCodeEventName.Message,
-	TaskModeSwitched = RooCodeEventName.TaskModeSwitched,
-	TaskInteractive = RooCodeEventName.TaskInteractive,
+	Message = GalaxiaEventName.Message,
+	TaskModeSwitched = GalaxiaEventName.TaskModeSwitched,
+	TaskInteractive = GalaxiaEventName.TaskInteractive,
 }
 
 export const taskBridgeEventSchema = z.discriminatedUnion("type", [

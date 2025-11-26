@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og"
+﻿import { ImageResponse } from "next/og"
 import { NextRequest } from "next/server"
 
 export const runtime = "edge"
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
 	const { searchParams } = requestUrl
 
 	// Get title and description from query params
-	const title = searchParams.get("title") || "Roo Code"
+	const title = searchParams.get("title") || "Galaxia"
 	const description = searchParams.get("description") || ""
 
 	// Combine all text that will be displayed for font loading

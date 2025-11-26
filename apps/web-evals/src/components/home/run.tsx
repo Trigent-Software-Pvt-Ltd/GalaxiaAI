@@ -3,8 +3,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Ellipsis, ClipboardList, Copy, Check, LoaderCircle, Trash, Settings } from "lucide-react"
 
-import type { Run as EvalsRun, TaskMetrics as EvalsTaskMetrics } from "@roo-code/evals"
-import type { ToolName } from "@roo-code/types"
+import type { Run as EvalsRun, TaskMetrics as EvalsTaskMetrics } from "@galaxia/evals"
+import type { ToolName } from "@galaxia/types"
 
 import { deleteRun } from "@/actions/runs"
 import {

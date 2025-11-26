@@ -1,9 +1,9 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { SEO } from "@/lib/seo"
 import { ogImageUrl } from "@/lib/og"
 
 const TITLE = "Our Cookie Policy"
-const DESCRIPTION = "Learn about how Roo Code uses cookies to enhance your experience and provide our services."
+const DESCRIPTION = "Learn about how Galaxia uses cookies to enhance your experience and provide our services."
 const OG_DESCRIPTION = ""
 const PATH = "/legal/cookies"
 
@@ -48,7 +48,7 @@ export default function CookiePolicy() {
 					<h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Cookie Policy</h1>
 
 					<p className="lead">
-						This Cookie Policy explains how Roo Code uses cookies and similar technologies to recognize you
+						This Cookie Policy explains how Galaxia uses cookies and similar technologies to recognize you
 						when you visit our website.
 					</p>
 
@@ -143,11 +143,11 @@ export default function CookiePolicy() {
 					<p>
 						Our blog at{" "}
 						<a
-							href="https://blog.roocode.com"
+							href="https://blog.Galaxia.com"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-primary hover:underline">
-							blog.roocode.com
+							blog.Galaxia.com
 						</a>{" "}
 						is hosted on Substack. When you visit it, Substack may set cookies for analytics,
 						personalization, and advertising/marketing. These cookies are managed directly by Substack and
@@ -187,8 +187,8 @@ export default function CookiePolicy() {
 					<h2 className="mt-12 text-2xl font-bold">Contact us</h2>
 					<p>
 						If you have questions about our use of cookies, please contact us at{" "}
-						<a href="mailto:privacy@roocode.com" className="text-primary hover:underline">
-							privacy@roocode.com
+						<a href="mailto:privacy@Galaxia.com" className="text-primary hover:underline">
+							privacy@Galaxia.com
 						</a>
 						.
 					</p>

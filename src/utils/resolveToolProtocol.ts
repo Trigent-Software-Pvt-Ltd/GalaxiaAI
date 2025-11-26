@@ -1,5 +1,5 @@
-import { ToolProtocol, TOOL_PROTOCOL } from "@roo-code/types"
-import type { ProviderSettings, ModelInfo } from "@roo-code/types"
+import { ToolProtocol, TOOL_PROTOCOL } from "@galaxia/types"
+import type { ProviderSettings, ModelInfo } from "@galaxia/types"
 
 /**
  * Resolve the effective tool protocol based on the precedence hierarchy:

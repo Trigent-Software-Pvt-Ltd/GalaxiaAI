@@ -1,4 +1,4 @@
-import ExcelJS from "exceljs"
+﻿import ExcelJS from "exceljs"
 import { extractTextFromXLSX } from "../extract-text-from-xlsx"
 
 describe("extractTextFromXLSX", () => {
@@ -152,13 +152,13 @@ describe("extractTextFromXLSX", () => {
 			const worksheet = workbook.addWorksheet("Sheet1")
 
 			worksheet.getCell("A1").value = {
-				text: "Roo Code",
-				hyperlink: "https://roocode.com/",
+				text: "Galaxia",
+				hyperlink: "https://trigent.com//",
 			}
 
 			const result = await extractTextFromXLSX(workbook)
 
-			expect(result).toContain("Roo Code (https://roocode.com/)")
+			expect(result).toContain("Galaxia (https://trigent.com//)")
 		})
 
 		it("should handle formulas with and without results", async () => {

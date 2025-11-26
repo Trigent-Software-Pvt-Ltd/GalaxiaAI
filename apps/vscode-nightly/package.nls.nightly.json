@@ -1,7 +1,7 @@
-{
-	"extension.displayName": "Roo Code Nightly",
-	"views.contextMenu.label": "Roo Code Nightly",
-	"views.terminalMenu.label": "Roo Code Nightly",
-	"views.activitybar.title": "Roo Code Nightly",
-	"configuration.title": "Roo Code Nightly"
+﻿{
+	"extension.displayName": "Galaxia Nightly",
+	"views.contextMenu.label": "Galaxia Nightly",
+	"views.terminalMenu.label": "Galaxia Nightly",
+	"views.activitybar.title": "Galaxia Nightly",
+	"configuration.title": "Galaxia Nightly"
 }

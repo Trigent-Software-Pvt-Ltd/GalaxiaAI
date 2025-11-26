@@ -1,4 +1,4 @@
-{
+﻿{
 	"readFile": {
 		"linesRange": " (第 {{start}}-{{end}} 行)",
 		"definitionsOnly": " (僅定義)",
@@ -24,7 +24,7 @@
 		"invalidImageFormat": "收到的圖像格式無效",
 		"unknownError": "發生未知錯誤",
 		"roo": {
-			"authRequired": "圖像生成需要 Roo Code Cloud 認證。請登入 Roo Code Cloud。"
+			"authRequired": "圖像生成需要 Galaxia Cloud 認證。請登入 Galaxia Cloud。"
 		}
 	}
 }

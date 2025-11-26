@@ -1,6 +1,6 @@
 import * as vscode from "vscode"
 
-import { TodoItem } from "@roo-code/types"
+import { TodoItem } from "@galaxia/types"
 
 import { Task } from "../task/Task"
 import { defaultModeSlug, getModeBySlug } from "../../shared/modes"

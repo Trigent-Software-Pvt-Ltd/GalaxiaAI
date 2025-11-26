@@ -1,17 +1,17 @@
-import * as vscode from "vscode"
+﻿import * as vscode from "vscode"
 
-import { CodeActionName, CodeActionId } from "@roo-code/types"
+import { CodeActionName, CodeActionId } from "@galaxia/types"
 import { Package } from "../shared/package"
 
 import { getCodeActionCommand } from "../utils/commands"
 import { EditorUtils } from "../integrations/editor/EditorUtils"
 
 export const TITLES: Record<CodeActionName, string> = {
-	EXPLAIN: "Explain with Roo Code",
-	FIX: "Fix with Roo Code",
-	IMPROVE: "Improve with Roo Code",
-	ADD_TO_CONTEXT: "Add to Roo Code",
-	NEW_TASK: "New Roo Code Task",
+	EXPLAIN: "Explain with Galaxia",
+	FIX: "Fix with Galaxia",
+	IMPROVE: "Improve with Galaxia",
+	ADD_TO_CONTEXT: "Add to Galaxia",
+	NEW_TASK: "New Galaxia Task",
 } as const
 
 export class CodeActionProvider implements vscode.CodeActionProvider {

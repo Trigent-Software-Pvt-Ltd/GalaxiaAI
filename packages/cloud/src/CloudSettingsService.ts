@@ -1,4 +1,4 @@
-import EventEmitter from "events"
+﻿import EventEmitter from "events"
 
 import type { ExtensionContext } from "vscode"
 
@@ -17,9 +17,9 @@ import {
 	organizationSettingsSchema,
 	userSettingsDataSchema,
 	ORGANIZATION_ALLOW_ALL,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
-import { getRooCodeApiUrl } from "./config.js"
+import { getGalaxiaApiUrl } from "./config.js"
 import { RefreshTimer } from "./RefreshTimer.js"
 
 const ORGANIZATION_SETTINGS_CACHE_KEY = "organization-settings"
@@ -112,7 +112,7 @@ export class CloudSettingsService extends EventEmitter<SettingsServiceEvents> im
 		}
 
 		try {
-			const response = await fetch(`${getRooCodeApiUrl()}/api/extension-settings`, {
+			const response = await fetch(`${getGalaxiaApiUrl()}/api/extension-settings`, {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
@@ -225,7 +225,7 @@ export class CloudSettingsService extends EventEmitter<SettingsServiceEvents> im
 				requestBody.version = currentVersion
 			}
 
-			const response = await fetch(`${getRooCodeApiUrl()}/api/user-settings`, {
+			const response = await fetch(`${getGalaxiaApiUrl()}/api/user-settings`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",

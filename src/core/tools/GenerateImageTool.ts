@@ -1,4 +1,4 @@
-import path from "path"
+﻿import path from "path"
 import fs from "fs/promises"
 import * as vscode from "vscode"
 import {
@@ -6,7 +6,7 @@ import {
 	IMAGE_GENERATION_MODEL_IDS,
 	IMAGE_GENERATION_MODELS,
 	getImageGenerationProvider,
-} from "@roo-code/types"
+} from "@galaxia/types"
 import { Task } from "../task/Task"
 import { formatResponse } from "../prompts/responses"
 import { fileExistsAtPath } from "../../utils/fs"
@@ -199,7 +199,7 @@ export class GenerateImageTool extends BaseTool<"generate_image"> {
 
 			let result
 			if (modelProvider === "roo") {
-				// Use Roo Code Cloud provider (supports both chat completions and images API)
+				// Use Galaxia Cloud provider (supports both chat completions and images API)
 				const rooHandler = new RooHandler({} as any)
 				result = await rooHandler.generateImage(prompt, selectedModel, inputImageData, apiMethod)
 			} else {

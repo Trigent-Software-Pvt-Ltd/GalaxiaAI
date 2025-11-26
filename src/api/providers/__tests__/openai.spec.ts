@@ -1,10 +1,10 @@
-// npx vitest run api/providers/__tests__/openai.spec.ts
+﻿// npx vitest run api/providers/__tests__/openai.spec.ts
 
 import { OpenAiHandler, getOpenAiModels } from "../openai"
 import { ApiHandlerOptions } from "../../../shared/api"
 import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
-import { openAiModelInfoSaneDefaults } from "@roo-code/types"
+import { openAiModelInfoSaneDefaults } from "@galaxia/types"
 import { Package } from "../../../shared/package"
 import axios from "axios"
 
@@ -111,9 +111,9 @@ describe("OpenAiHandler", () => {
 				baseURL: expect.any(String),
 				apiKey: expect.any(String),
 				defaultHeaders: {
-					"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-					"X-Title": "Roo Code",
-					"User-Agent": `RooCode/${Package.version}`,
+					"HTTP-Referer": "https://github.com/RooVetGit/galaxia",
+					"X-Title": "Galaxia",
+					"User-Agent": `Galaxia/${Package.version}`,
 				},
 				timeout: expect.any(Number),
 			})

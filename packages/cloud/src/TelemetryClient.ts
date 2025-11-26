@@ -1,16 +1,16 @@
-import {
+﻿import {
 	type TelemetryClient,
 	type TelemetryEvent,
 	type ClineMessage,
 	type AuthService,
 	type SettingsService,
 	TelemetryEventName,
-	rooCodeTelemetryEventSchema,
+	GalaxiaTelemetryEventSchema,
 	TelemetryPropertiesProvider,
 	TelemetryEventSubscription,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
-import { getRooCodeApiUrl } from "./config.js"
+import { getGalaxiaApiUrl } from "./config.js"
 import type { RetryQueue } from "./retry-queue/index.js"
 
 abstract class BaseTelemetryClient implements TelemetryClient {
@@ -109,7 +109,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			return
 		}
 
-		const url = `${getRooCodeApiUrl()}/api/${path}`
+		const url = `${getGalaxiaApiUrl()}/api/${path}`
 		const fetchOptions: RequestInit = {
 			...options,
 			headers: {
@@ -170,7 +170,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			console.info(`[TelemetryClient#capture] ${JSON.stringify(payload)}`)
 		}
 
-		const result = rooCodeTelemetryEventSchema.safeParse(payload)
+		const result = GalaxiaTelemetryEventSchema.safeParse(payload)
 
 		if (!result.success) {
 			console.error(
@@ -229,7 +229,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 				)
 			}
 
-			const url = `${getRooCodeApiUrl()}/api/events/backfill`
+			const url = `${getGalaxiaApiUrl()}/api/events/backfill`
 			const fetchOptions: RequestInit = {
 				method: "POST",
 				headers: {

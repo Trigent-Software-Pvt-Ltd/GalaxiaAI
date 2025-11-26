@@ -1,9 +1,9 @@
-// npx vitest core/webview/__tests__/ClineProvider.apiHandlerRebuild.spec.ts
+﻿// npx vitest core/webview/__tests__/ClineProvider.apiHandlerRebuild.spec.ts
 
 import * as vscode from "vscode"
 
-import { TelemetryService } from "@roo-code/telemetry"
-import { getModelId } from "@roo-code/types"
+import { TelemetryService } from "@galaxia/telemetry"
+import { getModelId } from "@galaxia/types"
 
 import { ContextProxy } from "../../config/ContextProxy"
 import { Task, TaskOptions } from "../../task/Task"
@@ -120,7 +120,7 @@ vi.mock("../../task/Task", () => ({
 	}),
 }))
 
-vi.mock("@roo-code/cloud", () => ({
+vi.mock("@galaxia/cloud", () => ({
 	CloudService: {
 		hasInstance: vi.fn().mockReturnValue(true),
 		get instance() {
@@ -132,7 +132,7 @@ vi.mock("@roo-code/cloud", () => ({
 	BridgeOrchestrator: {
 		isEnabled: vi.fn().mockReturnValue(false),
 	},
-	getRooCodeApiUrl: vi.fn().mockReturnValue("https://app.roocode.com"),
+	getGalaxiaApiUrl: vi.fn().mockReturnValue(""),
 }))
 
 describe("ClineProvider - API Handler Rebuild Guard", () => {

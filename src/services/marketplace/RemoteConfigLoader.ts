@@ -1,4 +1,4 @@
-import axios from "axios"
+﻿import axios from "axios"
 import * as yaml from "yaml"
 import { z } from "zod"
 
@@ -7,8 +7,8 @@ import {
 	type MarketplaceItemType,
 	modeMarketplaceItemSchema,
 	mcpMarketplaceItemSchema,
-} from "@roo-code/types"
-import { getRooCodeApiUrl } from "@roo-code/cloud"
+} from "@galaxia/types"
+import { getGalaxiaApiUrl } from "@galaxia/cloud"
 
 const modeMarketplaceResponse = z.object({
 	items: z.array(modeMarketplaceItemSchema),
@@ -24,7 +24,7 @@ export class RemoteConfigLoader {
 	private cacheDuration = 5 * 60 * 1000 // 5 minutes
 
 	constructor() {
-		this.apiBaseUrl = getRooCodeApiUrl()
+		this.apiBaseUrl = getGalaxiaApiUrl()
 	}
 
 	async loadAllItems(hideMarketplaceMcps = false): Promise<MarketplaceItem[]> {

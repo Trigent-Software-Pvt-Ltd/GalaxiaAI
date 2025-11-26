@@ -1,4 +1,4 @@
-import React from "react"
+﻿import React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { SEO } from "@/lib/seo"
@@ -13,13 +13,13 @@ import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const OG_TITLE = "Meet Roo Code"
+const OG_TITLE = "Meet Galaxia"
 const OG_DESCRIPTION = "The AI dev team that gets things done."
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SEO.url),
 	title: {
-		template: "%s | Roo Code",
+		template: "%s | Galaxia",
 		default: SEO.title,
 	},
 	description: SEO.description,

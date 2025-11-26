@@ -21,7 +21,7 @@ vi.mock("vscode", () => ({
 }))
 
 // Mock other dependencies
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@galaxia/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureCheckpointCreated: vi.fn(),

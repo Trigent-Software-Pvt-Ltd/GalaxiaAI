@@ -1,7 +1,7 @@
-import { z } from "zod"
+﻿import { z } from "zod"
 
 import {
-	type RooCodeSettings,
+	type GalaxiaSettings,
 	type ProviderSettings,
 	type PromptComponent,
 	type ModeConfig,
@@ -10,7 +10,7 @@ import {
 	type ShareVisibility,
 	type QueuedMessage,
 	marketplaceItemSchema,
-} from "@roo-code/types"
+} from "@galaxia/types"
 
 import { Mode } from "./modes"
 
@@ -253,7 +253,7 @@ export interface WebviewMessage {
 		codebaseIndexVercelAiGatewayApiKey?: string
 		codebaseIndexOpenRouterApiKey?: string
 	}
-	updatedSettings?: RooCodeSettings
+	updatedSettings?: GalaxiaSettings
 }
 
 export const checkoutDiffPayloadSchema = z.object({
