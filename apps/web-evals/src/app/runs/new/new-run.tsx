@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
@@ -474,11 +474,11 @@ export function NewRun() {
 									</FormControl>
 									<FormMessage />
 									<FormDescription>
-										If you have access to the Galaxia Cloud repository then you can generate a
-										token with:
+										If you have access to the Galaxia Cloud repository then you can generate a token
+										with:
 										<br />
 										<code className="text-xs">
-											pnpm --filter @roo-code-cloud/auth production:create-job-token [org]
+											pnpm --filter @galaxia-cloud/auth production:create-job-token [org]
 											[timeout]
 										</code>
 									</FormDescription>
